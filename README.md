@@ -18,11 +18,11 @@ Let's assume that you need to load the modules in the following way:
 
 or
 
-    var home: require("./home"),
-        users: require("./users"),
-        login: require("./login"),
-        logout: require("./logout"),
-        activate: require("./activate")
+    var home = require("./home"),
+        users = require("./users"),
+        login = require("./login"),
+        logout = require("./logout"),
+        activate = require("./activate")
 
     module.exports = {
         home: home,
