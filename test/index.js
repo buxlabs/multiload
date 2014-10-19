@@ -9,6 +9,8 @@ var assert     = require("assert"),
 
 util.log("Starting the tests.");
 
+// SUCCESS TESTS
+
 // TEST 1
 
 // ensure that the directories listed in the loaded object 
@@ -66,6 +68,44 @@ util.log("Starting the tests.");
 	assert(loaded.test_directory_3 === dir3text);
 
 })(__dirname);
+
+// TEST 4
+
+// ensure, that it's possible to filter out the modules
+
+(function (path) {
+
+	var loaded;
+
+	loaded = simpleload(path, { suffix: "job.js" });
+
+	assert(loaded.first.name === "first_job");
+	assert(loaded.second.name === "second_job");
+	assert(loaded.third.name === "third_job");
+
+})(__dirname + "/test_directory_4");
+
+// ERROR TESTS
+
+// TEST 5
+
+// it should throw an error if such directory doesn't exist
+
+(function (path) {
+
+	var loaded, exception;
+
+	try {
+		loaded = simpleload(path);
+	} catch (e) {
+		exception = e;
+	}
+
+	assert(typeof exception === "object");
+
+})(__dirname + "/non_existing_directory_123");
+
+// 
 
 
 util.log("All tests passed, no failures.");

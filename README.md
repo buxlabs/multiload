@@ -1,5 +1,5 @@
-simpleload
-==========
+simpleload v0.2.2
+=================
 
 nodejs: load the modules from current dir easily
 
@@ -38,11 +38,13 @@ Instead you can use simpleload:
 
 and it'll do the job for you.
 
-At the moment only directories are included, regular files are ignored
+You can also match modules based on their suffix:
+
+    module.exports = require("simpleload")(__dirname + "/my_modules", { suffix: "job.js" });
 
 Todo:
 -----
-* add some test cases,
-* show different ways it can be used,
-* use cfg object to forbid certain folders if necessary,
-* add an option to add files as modules as well (ignore current file)
+* tests,
+* examples,
+* docs,
+* cfg forbidden field
