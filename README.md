@@ -38,13 +38,25 @@ Instead you can use simpleload:
 
 and it'll do the job for you.
 
-You can also match modules based on their suffix:
 
-    module.exports = require("simpleload")(__dirname + "/my_modules", { suffix: "job.js" });
+Options:
+
+- suffix
+match files based on their suffix
+
+    module.exports = require("simpleload")(__dirname + "/my_modules", { suffix: "job.js" });  
+    // { a: fn1, b: fn2, c: fn3 }
+    
+- as
+return object (default) or array of functions
+
+    module.exports = require("simpleload")(__dirname + "/my_modules", { as: "values" });
+    // [ fn1, fn2, fn3 ]
+
 
 Todo:
 -----
-* tests,
+* more tests,
 * examples,
 * docs,
-* cfg forbidden field
+* exclude

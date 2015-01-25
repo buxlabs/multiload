@@ -6,6 +6,8 @@ var simpleload = require("./lib");
 
 module.exports = function (path, cfg) {
 
+    var modules;
+
     if (typeof path !== "string" || !path) {
         throw new Error("Path has to be defined properly");
     }
@@ -13,9 +15,15 @@ module.exports = function (path, cfg) {
     cfg = typeof cfg ==="object" && !Array.isArray(cfg) ? cfg : {};
 
     if (typeof cfg.suffix === "string") {
-        return simpleload.suffixLoad(path, cfg.suffix);
+        modules = simpleload.suffixLoad(path, cfg.suffix);
+    } else {
+        modules = simpleload.standardLoad(path);
     }
 
-    return simpleload.standardLoad(path);
+    if (cfg.as === "values") {
+        return Object.keys(modules).map(function (key) { return modules[key]; });
+    }
+
+    return modules;
 
 };

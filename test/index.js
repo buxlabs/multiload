@@ -1,7 +1,10 @@
+/* globals require, __dirname */
+"use strict";
+
 var assert     = require("assert"),
-	fs         = require("fs"),
-	util       = require("util"),
-    simpleload = require("../index.js");
+		fs         = require("fs"),
+		util       = require("util"),
+  	simpleload = require("../index.js");
 
 // mocha could be used
 // the tests are really simple so let's not add any dependencies yet
@@ -21,7 +24,6 @@ util.log("Starting the tests.");
 
 	loaded = simpleload(path);
 	dirs = fs.readdirSync(path);
-	prop;
 
 	for (prop in loaded) {
 		assert(dirs.indexOf(prop) !== -1);
@@ -40,7 +42,6 @@ util.log("Starting the tests.");
 
 	loaded = simpleload(path);
 	dirs = fs.readdirSync(path);
-	prop;
 
 	for (prop in loaded) {
 		assert(dirs.indexOf(prop) !== -1);
@@ -56,7 +57,7 @@ util.log("Starting the tests.");
 
 (function (path) {
 
-	var loaded, dir1, dir2, dir3;
+	var loaded, dir1text, dir2text, dir3text;
 
 	loaded = simpleload(path);
 	dir1text   = require("./test_directory_1");
@@ -85,9 +86,26 @@ util.log("Starting the tests.");
 
 })(__dirname + "/test_directory_4");
 
+// TEST 5
+
+// test if it's possible to get the modules as array of values
+
+(function (path) {
+
+	var values;
+
+	values = simpleload(path, { suffix: "job.js", as: "values" });
+
+	assert(Array.isArray(values));
+	assert(values[0].name === "first_job");
+	assert(values[1].name === "second_job");
+	assert(values[2].name === "third_job");
+
+})(__dirname + "/test_directory_4");
+
 // ERROR TESTS
 
-// TEST 5
+// TEST 6
 
 // it should throw an error if such directory doesn't exist
 
