@@ -1,4 +1,4 @@
-simpleload v0.2.2
+simpleload v0.3.0
 =================
 
 nodejs: load the modules from current dir easily
@@ -40,14 +40,15 @@ and it'll do the job for you.
 
 
 Options:
+--------
 
-- suffix
+suffix
 match files based on their suffix
 
     module.exports = require("simpleload")(__dirname + "/my_modules", { suffix: "job.js" });  
     // { a: fn1, b: fn2, c: fn3 }
     
-- as
+as
 return object (default) or array of functions
 
     module.exports = require("simpleload")(__dirname + "/my_modules", { as: "values" });
