@@ -42,13 +42,13 @@ and it'll do the job for you.
 Options:
 --------
 
-suffix
+`suffix`
 match files based on their suffix
 
     module.exports = require("simpleload")(__dirname + "/my_modules", { suffix: "job.js" });  
     // { a: fn1, b: fn2, c: fn3 }
     
-as
+`as`
 return object (default) or array of functions
 
     module.exports = require("simpleload")(__dirname + "/my_modules", { as: "values" });
