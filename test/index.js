@@ -14,7 +14,7 @@ util.log("Starting the tests.");
 
 // SUCCESS TESTS
 
-// TEST 1
+// TEST 1 SUCCESS
 
 // ensure that the directories listed in the loaded object 
 // are available in the directory you've specified
@@ -32,7 +32,7 @@ util.log("Starting the tests.");
 })(__dirname);
 
 
-// TEST 2
+// TEST 2 SUCCESS
 
 // ensure, that folders in different location are loaded well too
 
@@ -49,7 +49,7 @@ util.log("Starting the tests.");
 
 })(__dirname + "/different_location_1");
 
-// TEST 3
+// TEST 3 SUCCESS
 
 // ensure that the contents of the listed are ok
 // compare it to the manually loaded dependencies
@@ -70,7 +70,7 @@ util.log("Starting the tests.");
 
 })(__dirname);
 
-// TEST 4
+// TEST 4 SUCCESS
 
 // ensure, that it's possible to filter out the modules
 
@@ -86,7 +86,7 @@ util.log("Starting the tests.");
 
 })(__dirname + "/test_directory_4");
 
-// TEST 5
+// TEST 5 SUCCESS
 
 // test if it's possible to get the modules as array of values
 
@@ -103,9 +103,30 @@ util.log("Starting the tests.");
 
 })(__dirname + "/test_directory_4");
 
+// TEST 6 SUCCESS
+
+// test if a . in the beginning is matched correctly for suffix
+(function (path) {
+
+	var modules;
+
+	modules = simpleload(path, { suffix: ".schema.js" });
+
+	assert(modules.hasOwnProperty("module_1"));
+	assert(modules.hasOwnProperty("module_2"));
+	assert(modules.hasOwnProperty("module_3"));
+
+	modules = simpleload(path, { suffix: ".schema.js", as: "values" });
+
+	assert(modules[0] === "module_1");
+	assert(modules[1] === "module_2");
+	assert(modules[2] === "module_3");
+
+})(__dirname + "/test_directory_5");
+
 // ERROR TESTS
 
-// TEST 6
+// TEST 1 ERROR
 
 // it should throw an error if such directory doesn't exist
 

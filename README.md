@@ -1,4 +1,4 @@
-simpleload v0.3.0
+simpleload v0.3.1
 =================
 
 nodejs: load the modules from current dir easily
@@ -60,4 +60,5 @@ Todo:
 * more tests,
 * examples,
 * docs,
-* exclude
+* exclude,
+* global

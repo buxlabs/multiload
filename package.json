@@ -1,6 +1,6 @@
 {
   "name": "simpleload",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "nodejs: load the modules from current dir easily",
   "main": "index.js",
   "scripts": {
