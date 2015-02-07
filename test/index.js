@@ -26,7 +26,9 @@ util.log("Starting the tests.");
 	dirs = fs.readdirSync(path);
 
 	for (prop in loaded) {
-		assert(dirs.indexOf(prop) !== -1);
+		if (loaded.hasOwnProperty(prop)) {
+			assert(dirs.indexOf(prop) !== -1);
+		}
 	}
 
 })(__dirname);
@@ -124,6 +126,91 @@ util.log("Starting the tests.");
 
 })(__dirname + "/specdir_06");
 
+// TEST 7 SUCCESS
+
+// test if it's possible to expose the modules globally with the global flag set to true
+(function (path) {
+
+	var modules;
+
+	modules = simpleload(path, { suffix: "model.js", global: true });
+
+	assert(modules.hasOwnProperty("token"));
+	assert(modules.hasOwnProperty("user"));
+
+	assert(global.token === modules.token);
+	assert(global.user === modules.user);
+
+	assert(token === modules.token);
+	assert(user === modules.user);
+
+	assert(token === require("./specdir_07/token.model"));
+	assert(user === require("./specdir_07/user.model"));
+
+	delete global.token;
+	delete global.user;
+
+	assert(global.token === void 0);
+	assert(global.user === void 0);
+
+})(__dirname + "/specdir_07");
+
+// TEST 8 SUCCESS
+
+// it should be possible to override a global var if an override flag is passed
+
+(function (path) {
+
+	var modules, exception;
+
+	modules = simpleload(path, { suffix: "model.js", global: true });
+
+	assert(modules.hasOwnProperty("token"));
+	assert(modules.hasOwnProperty("user"));
+
+	assert(global.token === modules.token);
+	assert(global.user === modules.user);
+
+	try {
+		modules = simpleload(path, { suffix: "model.js", global: true, override: true });
+	} catch (e) {
+		exception = e;
+	}
+
+	assert(typeof exception === "undefined");
+
+	delete global.token;
+	delete global.user;
+
+	assert(global.token === void 0);
+	assert(global.user === void 0);
+
+})(__dirname + "/specdir_07");
+
+// TEST 9 SUCCESS
+
+// it should be possible to add modules to chosen global namespace
+(function (path) {
+
+	var modules;
+
+	modules = simpleload(path, { suffix: "model.js", global: true, namespace: "Model" });
+
+	assert(modules.hasOwnProperty("token"));
+	assert(modules.hasOwnProperty("user"));
+
+	assert(typeof global.Model === "object");
+	assert(global.Model.token === modules.token);
+	assert(global.Model.user === modules.user);
+
+	delete global.Model.token;
+	delete global.Model.user;
+	delete global.Model;
+
+	assert(global.Model === void 0);
+
+})(__dirname + "/specdir_07");
+
 // ERROR TESTS
 
 // TEST 1 ERROR
@@ -142,9 +229,38 @@ util.log("Starting the tests.");
 
 	assert(typeof exception === "object");
 
-})(__dirname + "/non_existing_directory_123");
+})(__dirname + "/specdir_XX");
 
-// 
+// TEST 2 ERROR
 
+// it should throw an error if you want to override an existing global var
+
+(function (path) {
+
+	var modules, exception;
+
+	modules = simpleload(path, { suffix: "model.js", global: true });
+
+	assert(modules.hasOwnProperty("token"));
+	assert(modules.hasOwnProperty("user"));
+
+	assert(global.token === modules.token);
+	assert(global.user === modules.user);
+
+	try {
+		modules = simpleload(path, { suffix: "model.js", global: true });
+	} catch (e) {
+		exception = e;
+	}
+
+	assert(typeof exception === "object");
+
+	delete global.token;
+	delete global.user;
+
+	assert(global.token === void 0);
+	assert(global.user === void 0);
+
+})(__dirname + "/specdir_07");
 
 util.log("All tests passed, no failures.");

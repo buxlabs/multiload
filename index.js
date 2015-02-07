@@ -20,6 +20,12 @@ module.exports = function (path, cfg) {
         modules = simpleload.standardLoad(path);
     }
 
+    // expose the modules globally
+    if (cfg.global) {
+        simpleload.expose(modules, cfg);
+    }
+
+    // we want to return the modules as an array
     if (cfg.as === "values") {
         return Object.keys(modules).map(function (key) { return modules[key]; });
     }

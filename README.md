@@ -1,4 +1,4 @@
-simpleload v0.3.1
+simpleload v0.3.2
 =================
 
 nodejs: load the modules from current dir easily
@@ -46,14 +46,25 @@ Options:
 match files based on their suffix
 
     module.exports = require("simpleload")(__dirname + "/my_modules", { suffix: "job.js" });  
-    // { a: fn1, b: fn2, c: fn3 }
+    // { a: module1, b: module2, c: module3 }
     
 `as`
 return object (default) or array of functions
 
-    module.exports = require("simpleload")(__dirname + "/my_modules", { as: "values" });
-    // [ fn1, fn2, fn3 ]
+    var modules = require("simpleload")(__dirname + "/my_modules", { as: "values" });
+    // [ module1, module2, module3 ]
 
+`global`
+expose the loaded modules as global vars
+
+    require("simpleload")(__dirname + "/models", { suffix: "model.js", global: true });
+    // assert(user === require("./models/user.model"));
+
+`namespace`
+expose the modules in a global namespace
+
+    require("simpleload")(__dirname + "models", { suffix: "model.js", global: true, namespace: "Model" });
+    // assert(Model.user === require("./models/user.model"));
 
 Todo:
 -----
@@ -61,4 +72,4 @@ Todo:
 * examples,
 * docs,
 * exclude,
-* global
+* process module names option (user to User etc.)
