@@ -47,7 +47,7 @@ util.log("Starting the tests.");
 		assert(dirs.indexOf(prop) !== -1);
 	}
 
-})(__dirname + "/different_location_1");
+})(__dirname + "/specdir_01");
 
 // TEST 3 SUCCESS
 
@@ -60,13 +60,13 @@ util.log("Starting the tests.");
 	var loaded, dir1text, dir2text, dir3text;
 
 	loaded = simpleload(path);
-	dir1text   = require("./test_directory_1");
-	dir2text   = require("./test_directory_2");
-	dir3text   = require("./test_directory_3");
+	dir1text   = require("./specdir_02");
+	dir2text   = require("./specdir_03");
+	dir3text   = require("./specdir_04");
 
-	assert(loaded.test_directory_1 === dir1text);
-	assert(loaded.test_directory_2 === dir2text);
-	assert(loaded.test_directory_3 === dir3text);
+	assert(loaded.specdir_02 === dir1text);
+	assert(loaded.specdir_03 === dir2text);
+	assert(loaded.specdir_04 === dir3text);
 
 })(__dirname);
 
@@ -84,7 +84,7 @@ util.log("Starting the tests.");
 	assert(loaded.second.name === "second_job");
 	assert(loaded.third.name === "third_job");
 
-})(__dirname + "/test_directory_4");
+})(__dirname + "/specdir_05");
 
 // TEST 5 SUCCESS
 
@@ -101,7 +101,7 @@ util.log("Starting the tests.");
 	assert(values[1].name === "second_job");
 	assert(values[2].name === "third_job");
 
-})(__dirname + "/test_directory_4");
+})(__dirname + "/specdir_05");
 
 // TEST 6 SUCCESS
 
@@ -122,7 +122,7 @@ util.log("Starting the tests.");
 	assert(modules[1] === "module_2");
 	assert(modules[2] === "module_3");
 
-})(__dirname + "/test_directory_5");
+})(__dirname + "/specdir_06");
 
 // ERROR TESTS
 
