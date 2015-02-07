@@ -1,7 +1,7 @@
 simpleload v0.3.2
 =================
 
-nodejs: load the modules from current dir easily
+nodejs: simple module loader
 
 What can I use it for?
 ----------------------

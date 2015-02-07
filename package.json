@@ -1,7 +1,7 @@
 {
   "name": "simpleload",
   "version": "0.3.2",
-  "description": "nodejs: load the modules from current dir easily",
+  "description": "nodejs: simple module loader",
   "main": "index.js",
   "scripts": {
     "test": "node test/index.js"
