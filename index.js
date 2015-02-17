@@ -20,6 +20,10 @@ module.exports = function (path, cfg) {
         modules = simpleload.standardLoad(path);
     }
 
+    if (cfg.decorate) {
+        simpleload.decorate(modules, cfg);
+    }
+
     // expose the modules globally
     if (cfg.global) {
         simpleload.expose(modules, cfg);

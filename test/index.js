@@ -211,6 +211,45 @@ util.log("Starting the tests.");
 
 })(__dirname + "/specdir_07");
 
+// TEST 10 success
+
+// it should be possible to capitalize the names of the modules
+
+(function (path) {
+
+	var modules;
+
+	modules = simpleload(path, { 
+		suffix: "model.js", 
+		decorate: function (name) {
+			return name[0].toUpperCase() + name.slice(1);
+		}
+	});
+
+	assert(typeof modules.User === "string", "modules.User should be defined");
+	assert(typeof modules.Token === "string", "modules.Token should be defined");
+
+})(__dirname + "/specdir_07");
+
+// TEST 11 success
+
+// it should be possible to capitalize the names of the modules with
+// use of a predefined function
+
+(function (path) {
+
+	var modules;
+
+	modules = simpleload(path, { 
+		suffix: "model.js", 
+		decorate: "capitalize"
+	});
+
+	assert(typeof modules.User === "string", "modules.User should be defined");
+	assert(typeof modules.Token === "string", "modules.Token should be defined");
+
+})(__dirname + "/specdir_07");
+
 // ERROR TESTS
 
 // TEST 1 ERROR

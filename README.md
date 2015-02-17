@@ -1,4 +1,4 @@
-simpleload v0.3.2
+simpleload v0.4.0
 =================
 
 nodejs: simple module loader
@@ -42,29 +42,46 @@ and it'll do the job for you.
 Options:
 --------
 
-`suffix`
-match files based on their suffix
+  suffix - match files based on their suffix
 
-    module.exports = require("simpleload")(__dirname + "/my_modules", { suffix: "job.js" });  
-    // { a: module1, b: module2, c: module3 }
-    
-`as`
-return object (default) or array of functions
+```bash
+module.exports = require("simpleload")(__dirname + "/my_modules", { suffix: "job.js" });  
+// { a: module1, b: module2, c: module3 }
+```    
 
-    var modules = require("simpleload")(__dirname + "/my_modules", { as: "values" });
-    // [ module1, module2, module3 ]
+  as - return object (default) or array of functions
 
-`global`
-expose the loaded modules as global vars
+```bash
+var modules = require("simpleload")(__dirname + "/my_modules", { as: "values" });
+// [ module1, module2, module3 ]
+```
 
-    require("simpleload")(__dirname + "/models", { suffix: "model.js", global: true });
-    // assert(user === require("./models/user.model"));
+  global - expose the loaded modules as global vars
 
-`namespace`
-expose the modules in a global namespace
+```bash
+require("simpleload")(__dirname + "/models", { suffix: "model.js", global: true });
+// assert(user === require("./models/user.model"));
+```
 
-    require("simpleload")(__dirname + "models", { suffix: "model.js", global: true, namespace: "Model" });
-    // assert(Model.user === require("./models/user.model"));
+  namespace - expose the modules in a global namespace
+
+```bash
+require("simpleload")(__dirname + "models", { suffix: "model.js", global: true, namespace: "Model" });
+// assert(Model.user === require("./models/user.model"));
+```
+
+  decorate - process the name of the loaded modules
+
+```bash
+require("simpleload")(__dirname + "models", { suffix: "model.js", decorate: "capitalize" });
+// assert(Model.User === require("./modules/user.model"));
+require("simpleload")(__dirname + "models", { 
+    suffix: "model.js", 
+    decorate: function (name) {
+        return name[0].toUpperCase() + name.slice(1);
+    }
+});
+```
 
 Todo:
 -----
@@ -72,4 +89,5 @@ Todo:
 * examples,
 * docs,
 * exclude,
-* process module names option (user to User etc.)
+* more decorators,
+* refactor
