@@ -1,4 +1,4 @@
-simpleload v0.4.0
+simpleload v0.4.1
 =================
 
 nodejs: simple module loader
@@ -66,21 +66,32 @@ require("simpleload")(__dirname + "/models", { suffix: "model.js", global: true 
   namespace - expose the modules in a global namespace
 
 ```bash
-require("simpleload")(__dirname + "models", { suffix: "model.js", global: true, namespace: "Model" });
+require("simpleload")(__dirname + "models", { 
+    suffix: "model.js", 
+    global: true, 
+namespace: "Model" });
+
 // assert(Model.user === require("./models/user.model"));
 ```
 
   decorate - process the name of the loaded modules
-
+  you can also use predefined functions, (capitalize, lowercase)
 ```bash
-require("simpleload")(__dirname + "models", { suffix: "model.js", decorate: "capitalize" });
-// assert(Model.User === require("./modules/user.model"));
-require("simpleload")(__dirname + "models", { 
-    suffix: "model.js", 
-    decorate: function (name) {
-        return name[0].toUpperCase() + name.slice(1);
-    }
-});
+var simpleload = require("simpleload"),
+    model = simpleload(__dirname + "models", { 
+        suffix: "model.js", 
+        decorate: "capitalize" 
+    });
+// assert(model.User === require("./modules/user.model"));
+
+var simpleload = require("simpleload"),
+    schema = simpleload(__dirname + "schemas", { 
+        suffix: "schema.js", 
+        decorate: function (name) {
+            return name[0].toUpperCase() + name.slice(1);
+        }
+    });
+// assert(schema.Login === require("./modules/login.schema"));
 ```
 
 Todo:

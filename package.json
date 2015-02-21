@@ -1,6 +1,6 @@
 {
   "name": "simpleload",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "nodejs: simple module loader",
   "main": "index.js",
   "scripts": {
