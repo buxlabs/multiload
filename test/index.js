@@ -138,6 +138,7 @@ util.log("Starting the tests.");
 	assert(modules.hasOwnProperty("token"));
 	assert(modules.hasOwnProperty("user"));
 
+	/* globals global, user, token */
 	assert(global.token === modules.token);
 	assert(global.user === modules.user);
 
@@ -241,7 +242,7 @@ util.log("Starting the tests.");
 	var modules;
 
 	modules = simpleload(path, { 
-		suffix: "model.js", 
+		suffix: ".model.js", 
 		decorate: "capitalize"
 	});
 
@@ -249,6 +250,26 @@ util.log("Starting the tests.");
 	assert(typeof modules.Token === "string", "modules.Token should be defined");
 
 })(__dirname + "/specdir_07");
+
+// TEST 12 SUCCESS
+
+// it should be possible to lowercase the names of modules with 
+// use of a predefined function
+
+(function (path) {
+
+	var modules;
+
+	modules = simpleload(path, {
+		suffix: ".handler.js",
+		decorate: "lowercase"
+	});
+
+	assert(typeof modules.base === "string", "modules.base should be defined");
+	assert(typeof modules.common === "string", "modules.common should be defined");
+
+})(__dirname + "/specdir_08");
+
 
 // ERROR TESTS
 
