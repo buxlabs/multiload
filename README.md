@@ -7,35 +7,39 @@ What can I use it for?
 ----------------------
 
 Let's assume that you need to load the modules in the following way:
-    
-    module.exports = {
-        home: require("./home"),
-        users: require("./users"),
-        login: require("./login"),
-        logout: require("./logout"),
-        activate: require("./activate")
-    };
+
+```bash    
+module.exports = {
+    home: require("./home"),
+    users: require("./users"),
+    login: require("./login"),
+    logout: require("./logout"),
+    activate: require("./activate")
+};
+```
 
 or
 
-    var home = require("./home"),
-        users = require("./users"),
-        login = require("./login"),
-        logout = require("./logout"),
-        activate = require("./activate")
+```bash
+var home = require("./home"),
+    users = require("./users"),
+    login = require("./login"),
+    logout = require("./logout"),
+    activate = require("./activate")
 
-    module.exports = {
-        home: home,
-        users: users,
-        login: login,
-        logout: logout,
-        activate: activate
-    };
+module.exports = {
+    home: home,
+    users: users,
+    login: login,
+    logout: logout,
+    activate: activate
+};
+```
 
 Instead you can use simpleload:
-
-    module.exports = require("simpleload")(__dirname);
-
+```bash
+module.exports = require("simpleload")(__dirname);
+```
 and it'll do the job for you.
 
 
@@ -69,12 +73,14 @@ require("simpleload")(__dirname + "/models", { suffix: "model.js", global: true 
 require("simpleload")(__dirname + "models", { 
     suffix: "model.js", 
     global: true, 
-namespace: "Model" });
+    namespace: "Model" 
+});
 
 // assert(Model.user === require("./models/user.model"));
 ```
 
   decorate - process the name of the loaded modules
+  
   you can also use predefined functions, (capitalize, lowercase)
 ```bash
 var simpleload = require("simpleload"),
