@@ -1,7 +1,7 @@
 simpleload v0.4.1
 =================
 
-nodejs: simple module loader
+load multiple modules easily
 
 What can I use it for?
 ----------------------
@@ -80,7 +80,7 @@ require("simpleload")(__dirname + "models", {
 ```
 
   decorate - process the name of the loaded modules
-  
+
   you can also use predefined functions, (capitalize, lowercase)
 ```bash
 var simpleload = require("simpleload"),
