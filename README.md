@@ -70,7 +70,7 @@ require("simpleload")(__dirname + "/models", { suffix: "model.js", global: true 
   namespace - expose the modules in a global namespace
 
 ```bash
-require("simpleload")(__dirname + "models", { 
+require("simpleload")(__dirname + "/models", { 
     suffix: "model.js", 
     global: true, 
     namespace: "Model" 
@@ -84,14 +84,14 @@ require("simpleload")(__dirname + "models", {
   you can also use predefined functions, (capitalize, lowercase)
 ```bash
 var simpleload = require("simpleload"),
-    model = simpleload(__dirname + "models", { 
+    model = simpleload(__dirname + "/models", { 
         suffix: "model.js", 
         decorate: "capitalize" 
     });
 // assert(model.User === require("./modules/user.model"));
 
 var simpleload = require("simpleload"),
-    schema = simpleload(__dirname + "schemas", { 
+    schema = simpleload(__dirname + "/schemas", { 
         suffix: "schema.js", 
         decorate: function (name) {
             return name[0].toUpperCase() + name.slice(1);
@@ -104,7 +104,7 @@ var simpleload = require("simpleload"),
 
 ```bash
 var simpleload = require("simpleload"),
-    contents = simpleload(__dirname + "articles", {
+    contents = simpleload(__dirname + "/articles", {
         extension: "html"
     });
 // assert(contents.firstArticle === fs.readFileSync(__dirname + "/articles/firstArticle.html"));
