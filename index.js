@@ -14,7 +14,11 @@ module.exports = function (path, cfg) {
 
     cfg = typeof cfg ==="object" && !Array.isArray(cfg) ? cfg : {};
 
-    if (typeof cfg.suffix === "string") {
+    // in case an extension was provided
+    // we use different loading method
+    if (typeof cfg.extension === "string") {
+        modules = simpleload.extensionLoad(path, cfg.extension);
+    } else if (typeof cfg.suffix === "string") {
         modules = simpleload.suffixLoad(path, cfg.suffix);
     } else {
         modules = simpleload.standardLoad(path);

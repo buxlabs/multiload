@@ -1,4 +1,4 @@
-simpleload v0.4.1
+simpleload v0.4.2
 =================
 
 load multiple modules easily
@@ -100,6 +100,16 @@ var simpleload = require("simpleload"),
 // assert(schema.Login === require("./modules/login.schema"));
 ```
 
+    extension - load html files from given folder (can be useful in imports)
+
+```bash
+var simpleload = require("simpleload"),
+    contents = simpleload(__dirname + "articles", {
+        extension: "html"
+    });
+// assert(contents.firstArticle === fs.readFileSync(__dirname + "/articles/firstArticle.html"));
+```
+
 Todo:
 -----
 * more tests,
@@ -107,4 +117,5 @@ Todo:
 * docs,
 * exclude,
 * more decorators,
+* support more file formats for extension option,
 * refactor

@@ -8,9 +8,14 @@ var assert     = require("assert"),
 
 // mocha could be used
 // the tests are really simple so let's not add any dependencies yet
+// simpleload should be synchronous, as it is used for loading simple
+// dependencies or modules at start
 
+var startDate, endDate;
 
+startDate = new Date();
 util.log("Starting the tests.");
+
 
 // SUCCESS TESTS
 
@@ -270,6 +275,29 @@ util.log("Starting the tests.");
 
 })(__dirname + "/specdir_08");
 
+// TEST 13 SUCCESS
+
+// it should be possible to load html files
+
+(function (path) {
+
+	var modules;
+
+	modules = simpleload(path, {
+		extension: "html"
+	});
+
+	assert(typeof modules.firstArticle === "string");
+	assert(typeof modules.secondArticle === "string");
+
+	assert(modules.firstArticle === "<h1>Hello world</h1>");
+	assert(modules.secondArticle === "<h1>Second article</h1>");
+
+	assert(modules.firstArticle === fs.readFileSync(path + "/firstArticle.html", "utf-8"));
+	assert(modules.secondArticle === fs.readFileSync(path + "/secondArticle.html", "utf-8"));
+
+})(__dirname + "/specdir_09");
+
 
 // ERROR TESTS
 
@@ -323,4 +351,28 @@ util.log("Starting the tests.");
 
 })(__dirname + "/specdir_07");
 
-util.log("All tests passed, no failures.");
+// TEST 3 ERROR
+
+// it should throw an error in case of an unsupported extension
+
+(function (path) {
+
+	var loaded, exception;
+
+	try {
+		loaded = simpleload(path, {
+			extension: "exe"
+		});
+	} catch (e) {
+		exception = e;
+	}
+	// expect that the exception will occur
+	assert(typeof exception === "object");
+	// we expect that the error message will contain the
+	// extension name
+	assert(exception.message.indexOf("exe") !== -1);
+
+})(__dirname + "/specdir_09");
+
+endDate = new Date();
+util.log("All tests passed, no failures. They took " + (endDate - startDate) + " ms to run.");
