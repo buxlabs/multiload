@@ -100,7 +100,7 @@ var simpleload = require("simpleload"),
 // assert(schema.Login === require("./modules/login.schema"));
 ```
 
-    extension - load html files from given folder (can be useful in imports)
+  extension - load html files from given folder (can be useful in imports)
 
 ```bash
 var simpleload = require("simpleload"),
