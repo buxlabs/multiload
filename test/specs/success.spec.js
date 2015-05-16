@@ -2,7 +2,6 @@
 
 var assert     = require("assert"),
     fs         = require("fs"),
-    util       = require("util"),
     simpleload = require("../../index.js");
 
 // TODO split the success spec into several files
@@ -27,10 +26,30 @@ var assert     = require("assert"),
     }
   }
 
-})(__dirname);
-
+})(__dirname + "/../fixtures");
 
 // TEST 2 SUCCESS
+
+// ensure that the contents of the listed are ok
+// compare it to the manually loaded dependencies
+// simple strings are used in this test
+
+(function (path) {
+
+  var loaded, dir1text, dir2text, dir3text;
+
+  loaded = simpleload(path);
+  dir1text   = require("../fixtures/dir_02");
+  dir2text   = require("../fixtures/dir_03");
+  dir3text   = require("../fixtures/dir_04");
+
+  assert(loaded.dir_02 === dir1text);
+  assert(loaded.dir_03 === dir2text);
+  assert(loaded.dir_04 === dir3text);
+
+})(__dirname + "/../fixtures");
+
+// TEST 3 SUCCESS
 
 // ensure, that folders in different location are loaded well too
 
@@ -45,28 +64,7 @@ var assert     = require("assert"),
     assert(dirs.indexOf(prop) !== -1);
   }
 
-})(__dirname + "/dir_01");
-
-// TEST 3 SUCCESS
-
-// ensure that the contents of the listed are ok
-// compare it to the manually loaded dependencies
-// simple strings are used in this test
-
-(function (path) {
-
-  var loaded, dir1text, dir2text, dir3text;
-
-  loaded = simpleload(path);
-  dir1text   = require("./dir_02");
-  dir2text   = require("./dir_03");
-  dir3text   = require("./dir_04");
-
-  assert(loaded.dir_02 === dir1text);
-  assert(loaded.dir_03 === dir2text);
-  assert(loaded.dir_04 === dir3text);
-
-})(__dirname);
+})(__dirname + "/../fixtures/dir_01");
 
 // TEST 4 SUCCESS
 
@@ -82,13 +80,15 @@ var assert     = require("assert"),
   assert(loaded.second.name === "second_job");
   assert(loaded.third.name === "third_job");
 
-})(__dirname + "/dir_05");
+})(__dirname + "/../fixtures/dir_05");
 
 // TEST 5 SUCCESS
 
 // test if it's possible to get the modules as array of values
 
 (function (path) {
+
+
 
   var values;
 
@@ -99,7 +99,7 @@ var assert     = require("assert"),
   assert(values[1].name === "second_job");
   assert(values[2].name === "third_job");
 
-})(__dirname + "/dir_05");
+})(__dirname + "/../fixtures/dir_05");
 
 // TEST 6 SUCCESS
 
@@ -120,7 +120,7 @@ var assert     = require("assert"),
   assert(modules[1] === "module_2");
   assert(modules[2] === "module_3");
 
-})(__dirname + "/dir_06");
+})(__dirname + "/../fixtures/dir_06");
 
 // TEST 7 SUCCESS
 
@@ -141,8 +141,8 @@ var assert     = require("assert"),
   assert(token === modules.token);
   assert(user === modules.user);
 
-  assert(token === require("./dir_07/token.model"));
-  assert(user === require("./dir_07/user.model"));
+  assert(token === require("../fixtures/dir_07/token.model"));
+  assert(user === require("../fixtures/dir_07/user.model"));
 
   delete global.token;
   delete global.user;
@@ -150,7 +150,7 @@ var assert     = require("assert"),
   assert(global.token === void 0);
   assert(global.user === void 0);
 
-})(__dirname + "/dir_07");
+})(__dirname + "/../fixtures/dir_07");
 
 // TEST 8 SUCCESS
 
@@ -182,7 +182,7 @@ var assert     = require("assert"),
   assert(global.token === void 0);
   assert(global.user === void 0);
 
-})(__dirname + "/dir_07");
+})(__dirname + "/../fixtures/dir_07");
 
 // TEST 9 SUCCESS
 
@@ -206,7 +206,7 @@ var assert     = require("assert"),
 
   assert(global.Model === void 0);
 
-})(__dirname + "/dir_07");
+})(__dirname + "/../fixtures/dir_07");
 
 // TEST 10 success
 
@@ -226,7 +226,7 @@ var assert     = require("assert"),
   assert(typeof modules.User === "string", "modules.User should be defined");
   assert(typeof modules.Token === "string", "modules.Token should be defined");
 
-})(__dirname + "/dir_07");
+})(__dirname + "/../fixtures/dir_07");
 
 // TEST 11 success
 
@@ -245,7 +245,7 @@ var assert     = require("assert"),
   assert(typeof modules.User === "string", "modules.User should be defined");
   assert(typeof modules.Token === "string", "modules.Token should be defined");
 
-})(__dirname + "/dir_07");
+})(__dirname + "/../fixtures/dir_07");
 
 // TEST 12 SUCCESS
 
@@ -264,7 +264,7 @@ var assert     = require("assert"),
   assert(typeof modules.base === "string", "modules.base should be defined");
   assert(typeof modules.common === "string", "modules.common should be defined");
 
-})(__dirname + "/dir_08");
+})(__dirname + "/../fixtures/dir_08");
 
 // TEST 13 SUCCESS
 
@@ -287,4 +287,4 @@ var assert     = require("assert"),
   assert(modules.firstArticle === fs.readFileSync(path + "/firstArticle.html", "utf-8"));
   assert(modules.secondArticle === fs.readFileSync(path + "/secondArticle.html", "utf-8"));
 
-})(__dirname + "/dir_09");
+})(__dirname + "/../fixtures/dir_09");

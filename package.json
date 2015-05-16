@@ -4,7 +4,7 @@
   "description": "nodejs: simple module loader",
   "main": "index.js",
   "scripts": {
-    "test": "node test/index.js"
+    "test": "node test/runner.js"
   },
   "repository": {
     "type": "git",

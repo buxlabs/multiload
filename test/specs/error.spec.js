@@ -21,7 +21,7 @@ var assert     = require("assert"),
 
   assert(typeof exception === "object");
 
-})(__dirname + "/dir_XX");
+})(__dirname + "/../fixtures/dir_XX");
 
 // TEST 2 ERROR
 
@@ -53,7 +53,7 @@ var assert     = require("assert"),
   assert(global.token === void 0);
   assert(global.user === void 0);
 
-})(__dirname + "/dir_07");
+})(__dirname + "/../fixtures/dir_07");
 
 // TEST 3 ERROR
 
@@ -76,7 +76,7 @@ var assert     = require("assert"),
   // extension name
   assert(exception.message.indexOf("exe") !== -1);
 
-})(__dirname + "/dir_09");
+})(__dirname + "/../fixtures/dir_09");
 
 // TEST 4 ERROR
 
@@ -97,4 +97,4 @@ var assert     = require("assert"),
   assert(exception);
   assert(exception.message.indexOf("no modules found") !== -1);
 
-})(__dirname + "/dir_10");
+})(__dirname + "/../fixtures/dir_10");

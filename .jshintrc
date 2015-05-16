@@ -1,6 +1,6 @@
 {
   "undef": true,
-  "unused": false,
+  "unused": true,
   "indent": 2,
   "node": true,
   "expr": true,
