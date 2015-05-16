@@ -1,0 +1,13 @@
+{
+  "undef": true,
+  "unused": false,
+  "indent": 2,
+  "node": true,
+  "expr": true,
+  "predef": [
+    "module",
+    "process",
+    "__dirname",
+    "exports"
+  ]
+}
