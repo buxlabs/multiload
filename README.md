@@ -1,4 +1,4 @@
-simpleload v0.4.2
+simpleload v0.5.0
 =================
 
 load multiple modules easily
@@ -110,12 +110,23 @@ var simpleload = require("simpleload"),
 // assert(contents.firstArticle === fs.readFileSync(__dirname + "/articles/firstArticle.html"));
 ```
 
+  exclude - exclude given modules
+
+```bash
+var simpleload = require("simpleload"),
+    modules = simpleload(__dirname + "/services", {
+        suffix: "service.js",
+        exclude: "base"
+    });
+// assert(!modules.base);
+```
+
 Todo:
 -----
-* more tests,
+* more specs,
 * examples,
-* docs,
-* exclude,
+* better docs,
 * more decorators,
 * support more file formats for extension option,
-* refactor
+* refactor code,
+* refactor specs
