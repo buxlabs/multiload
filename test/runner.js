@@ -15,8 +15,8 @@ startDate = new Date();
 util.log("Starting the tests.");
 
 // use simpleload to load the specs
-var loaded = simpleload(__dirname + "/specs", { suffix: "spec.js", as: "values" });
-assert(loaded.length === 7);
+var specs = simpleload(__dirname + "/specs", { suffix: "spec.js", as: "values" });
+assert(specs.length === 7);
 
 endDate = new Date();
 util.log("All tests passed, no failures. They took " + (endDate - startDate) + " ms to run.");
