@@ -1,4 +1,4 @@
-simpleload v0.5.0
+simpleload v0.5.1
 =================
 
 load multiple modules easily
