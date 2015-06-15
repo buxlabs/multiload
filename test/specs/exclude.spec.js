@@ -3,6 +3,8 @@
 var assert     = require("assert"),
     simpleload = require("../../index.js");
 
+// TEST 1 SUCCESS
+
 // it should be possible to exclude given modules
 
 (function (path) {
@@ -20,6 +22,8 @@ var assert     = require("assert"),
   assert(Object.keys(loaded).length === 1);
 
 })(__dirname + "/../fixtures/dir_11");
+
+// TEST 2 SUCCESS
 
 // it should be possible to exclude given modules when array is passed
 

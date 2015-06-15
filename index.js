@@ -1,5 +1,3 @@
-/* globals require, module */
-
 "use strict";
 
 var simpleload = require("./lib");
