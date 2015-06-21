@@ -60,3 +60,22 @@ var assert     = require("assert"),
   assert(typeof modules.common === "string", "modules.common should be defined");
 
 })(__dirname + "/../fixtures/dir_08");
+
+// TEST 4 SUCCESS
+
+// it should be possible to use the eventize decorator
+
+(function (path) {
+
+  var modules;
+
+  modules = simpleload(path, {
+    suffix: ".event.js",
+    decorate: "eventize"
+  });
+
+  assert(modules["user:account:locked"] === "userAccountLocked");
+  assert(modules["user:forgot:password"] === "userForgotPassword");
+  assert(modules["user:registered"] === "userRegistered");
+
+})(__dirname + "/../fixtures/dir_12");

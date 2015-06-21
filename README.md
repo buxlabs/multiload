@@ -1,4 +1,4 @@
-simpleload v0.5.1
+simpleload v0.5.2
 =================
 
 load multiple modules easily
@@ -81,7 +81,7 @@ require("simpleload")(__dirname + "/models", {
 
   decorate - process the name of the loaded modules
 
-  you can also use predefined functions, (capitalize, lowercase)
+  you can also use predefined functions, (capitalize, lowercase, eventize)
 ```bash
 var simpleload = require("simpleload"),
     model = simpleload(__dirname + "/models", { 
