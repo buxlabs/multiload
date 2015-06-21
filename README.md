@@ -1,4 +1,4 @@
-simpleload v0.5.2
+simpleload v0.5.3
 =================
 
 load multiple modules easily
@@ -119,6 +119,20 @@ var simpleload = require("simpleload"),
         exclude: "base"
     });
 // assert(!modules.base);
+```
+
+  register - register given handlers on given channel method
+
+```bash
+var simpleload = require("simpleload"),
+    events = require("events"),
+    channel = new events.EventEmitter(),
+    modules = simpleload(__dirname + "/events", {
+        suffix: "event.js",
+        decorate: "eventize",
+        register: [channel, "on"]
+    });
+// assert(modules.listeners["user:registered"].length === 1);
 ```
 
 Todo:
