@@ -74,8 +74,8 @@ var assert     = require("assert"),
     decorate: "eventize"
   });
 
-  assert(modules["user:account:locked"] === "userAccountLocked");
-  assert(modules["user:forgot:password"] === "userForgotPassword");
-  assert(modules["user:registered"] === "userRegistered");
+  assert(modules["user:account:locked"]() === "userAccountLocked");
+  assert(modules["user:forgot:password"]() === "userForgotPassword");
+  assert(modules["user:registered"]() === "userRegistered");
 
 })(__dirname + "/../fixtures/dir_12");

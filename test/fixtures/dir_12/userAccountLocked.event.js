@@ -1,1 +1,5 @@
-module.exports = "userAccountLocked";
+"use strict";
+
+module.exports = function () {
+  return "userAccountLocked";
+};

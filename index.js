@@ -35,6 +35,10 @@ module.exports = function (path, cfg) {
         modules = simpleload.exclude(modules, cfg.exclude);
     }
 
+    if (cfg.register) {
+        simpleload.register(modules, cfg.register);
+    }
+
     // check if there's at least one module that has been loaded
     // otherwise throw an error
     if (Object.keys(modules).length === 0) {

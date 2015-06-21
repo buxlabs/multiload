@@ -1,1 +1,5 @@
-module.exports = "userRegistered";
+"use strict";
+
+module.exports = function () {
+  return "userRegistered";
+};
