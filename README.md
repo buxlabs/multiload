@@ -1,6 +1,6 @@
 # simpleload v0.5.4
 
-Load multiple modules into an object or globally. Useful for repetive require calls.
+Load multiple modules into an object or globally. Useful for repetitive require calls.
 
 ## Usage
 
