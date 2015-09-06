@@ -8,6 +8,12 @@
     "module",
     "process",
     "__dirname",
-    "exports"
+    "exports",
+    "before",
+    "after",
+    "beforeEach",
+    "afterEach",
+    "describe",
+    "it"
   ]
 }
