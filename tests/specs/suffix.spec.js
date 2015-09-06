@@ -1,62 +1,53 @@
 "use strict";
 
-var assert     = require("assert"),
+var expect     = require("chai").expect,
     simpleload = require("../../index.js");
 
 describe("suffix", function () {
 
     it("should be possible to filter out the modules", function () {
 
-        (function (path) {
+        var path = __dirname + "/../fixtures/dir_05",
+            loaded;
 
-            var loaded;
-  
-            loaded = simpleload(path, { suffix: "job.js" });
-  
-            assert(loaded.first.name === "first_job");
-            assert(loaded.second.name === "second_job");
-            assert(loaded.third.name === "third_job");
+        loaded = simpleload(path, { suffix: "job.js" });
 
-        })(__dirname + "/../fixtures/dir_05");
+        expect(loaded.first.name).to.equal("first_job");
+        expect(loaded.second.name).to.equal("second_job");
+        expect(loaded.third.name).to.equal("third_job");
 
     });
 
     it("should be possible to get the modules as an array of values", function () {
 
-        (function (path) {
-
-            var values;
-      
-            values = simpleload(path, { suffix: "job.js", as: "values" });
-      
-            assert(Array.isArray(values));
-            assert(values[0].name === "first_job");
-            assert(values[1].name === "second_job");
-            assert(values[2].name === "third_job");
-
-        })(__dirname + "/../fixtures/dir_05");
+        var path = __dirname + "/../fixtures/dir_05",
+            values;
+  
+        values = simpleload(path, { suffix: "job.js", as: "values" });
+  
+        expect(values).to.be.an("array");
+        expect(values[0].name).to.equal("first_job");
+        expect(values[1].name).to.equal("second_job");
+        expect(values[2].name).to.equal("third_job");
 
     });
 
     it("should match . in the beginning is matched correctly for suffix", function () {
 
-        (function (path) {
+        var path = __dirname + "/../fixtures/dir_06",
+            modules;
 
-            var modules;
-  
-            modules = simpleload(path, { suffix: ".schema.js" });
-  
-            assert(modules.hasOwnProperty("module_1"));
-            assert(modules.hasOwnProperty("module_2"));
-            assert(modules.hasOwnProperty("module_3"));
-  
-            modules = simpleload(path, { suffix: ".schema.js", as: "values" });
-  
-            assert(modules[0] === "module_1");
-            assert(modules[1] === "module_2");
-            assert(modules[2] === "module_3");
+        modules = simpleload(path, { suffix: ".schema.js" });
 
-        })(__dirname + "/../fixtures/dir_06");
+        expect(modules.module_1).to.exist;
+        expect(modules.module_2).to.exist;
+        expect(modules.module_3).to.exist;
+
+        modules = simpleload(path, { suffix: ".schema.js", as: "values" });
+
+        expect(modules[0]).to.equal("module_1");
+        expect(modules[1]).to.equal("module_2");
+        expect(modules[2]).to.equal("module_3");
 
     });
 

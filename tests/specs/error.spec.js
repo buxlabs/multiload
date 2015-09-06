@@ -1,7 +1,6 @@
 "use strict";
 
 var expect     = require("chai").expect,
-    assert     = require("assert"),
     simpleload = require("../../index.js");
 
 describe("error handling", function () {
@@ -12,9 +11,9 @@ describe("error handling", function () {
             path = __dirname + "/../fixtures/dir_XX";
 
         try {
-          simpleload(path);
+            simpleload(path);
         } catch (e) {
-          exception = e;
+            exception = e;
         }
 
         expect(exception).to.be.an.instanceof(Error);
@@ -35,9 +34,9 @@ describe("error handling", function () {
         expect(global.user).to.equal(modules.user);
 
         try {
-          simpleload(path, { suffix: "model.js", global: true });
+            simpleload(path, { suffix: "model.js", global: true });
         } catch (e) {
-          exception = e;
+            exception = e;
         }
 
         expect(exception).to.be.an.instanceof(Error);
@@ -56,11 +55,11 @@ describe("error handling", function () {
             path = __dirname + "/../fixtures/dir_09";
 
         try {
-          simpleload(path, {
-            extension: "exe"
-          });
+            simpleload(path, {
+                extension: "exe"
+            });
         } catch (e) {
-          exception = e;
+            exception = e;
         }
         // expect that the exception will occur
         expect(exception).to.be.an.instanceof(Error);
@@ -76,9 +75,9 @@ describe("error handling", function () {
             path = __dirname + "/../fixtures/dir_10";
 
         try {
-          simpleload(path);
+            simpleload(path);
         } catch (e) {
-          exception = e;
+            exception = e;
         }
 
         expect(exception.message.indexOf("no modules found")).to.not.equal(-1);

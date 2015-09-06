@@ -1,7 +1,6 @@
 "use strict";
 
-var 
-    assert = require("assert"),
+var expect = require("chai").expect,
     events = require("events"),
     simpleload = require("../../index.js"),
     channel = new events.EventEmitter();
@@ -9,33 +8,31 @@ var
 describe("register", function () {
 
     it("it should be possible to register loaded modules by name in given channel", function () {
-        (function (path) {
 
-            var modules;
-      
-            assert(channel.listeners("user:account:locked").length === 0);
-            assert(channel.listeners("user:forgot:password").length === 0);
-            assert(channel.listeners("user:registered").length === 0);
-      
-            modules = simpleload(path, {
-              suffix: ".event.js",
-              decorate: "eventize",
-              register: [channel, "on"]
-            });
-      
-            assert(modules["user:account:locked"]() === "userAccountLocked");
-            assert(modules["user:forgot:password"]() === "userForgotPassword");
-            assert(modules["user:registered"]() === "userRegistered");
-      
-            assert(channel.listeners("user:account:locked").length === 1);
-            assert(channel.listeners("user:forgot:password").length === 1);
-            assert(channel.listeners("user:registered").length === 1);
-      
-            assert(channel.listeners("user:account:locked")[0]() === "userAccountLocked");
-            assert(channel.listeners("user:forgot:password")[0]() === "userForgotPassword");
-            assert(channel.listeners("user:registered")[0]() === "userRegistered");
-
-        })(__dirname + "/../fixtures/dir_12");
+        var path = __dirname + "/../fixtures/dir_12",
+            modules;
+  
+        expect(channel.listeners("user:account:locked")).to.have.length(0);
+        expect(channel.listeners("user:forgot:password")).to.have.length(0);
+        expect(channel.listeners("user:registered")).to.have.length(0);
+  
+        modules = simpleload(path, {
+            suffix: ".event.js",
+            decorate: "eventize",
+            register: [channel, "on"]
+        });
+  
+        expect(modules["user:account:locked"]()).to.equal("userAccountLocked");
+        expect(modules["user:forgot:password"]()).to.equal("userForgotPassword");
+        expect(modules["user:registered"]()).to.equal("userRegistered");
+  
+        expect(channel.listeners("user:account:locked")).to.have.length(1);
+        expect(channel.listeners("user:forgot:password")).to.have.length(1);
+        expect(channel.listeners("user:registered")).to.have.length(1);
+  
+        expect(channel.listeners("user:account:locked")[0]()).to.equal("userAccountLocked");
+        expect(channel.listeners("user:forgot:password")[0]()).to.equal("userForgotPassword");
+        expect(channel.listeners("user:registered")[0]()).to.equal("userRegistered");
 
     });
 
