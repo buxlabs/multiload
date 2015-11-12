@@ -2,15 +2,17 @@
 
 var expect = require("chai").expect,
     events = require("events"),
-    simpleload = require("../../index.js"),
-    channel = new events.EventEmitter();
+    simpleload = require("../../index.js");
 
 describe("register", function () {
 
     it("it should be possible to register loaded modules by name in given channel", function () {
 
         var path = __dirname + "/../fixtures/dir_12",
-            modules;
+            modules,
+            channel;
+
+        channel = new events.EventEmitter();
   
         expect(channel.listeners("user:account:locked")).to.have.length(0);
         expect(channel.listeners("user:forgot:password")).to.have.length(0);
@@ -33,6 +35,47 @@ describe("register", function () {
         expect(channel.listeners("user:account:locked")[0]()).to.equal("userAccountLocked");
         expect(channel.listeners("user:forgot:password")[0]()).to.equal("userForgotPassword");
         expect(channel.listeners("user:registered")[0]()).to.equal("userRegistered");
+
+        channel.removeAllListeners();
+
+        expect(channel.listeners("user:account:locked")).to.have.length(0);
+        expect(channel.listeners("user:forgot:password")).to.have.length(0);
+        expect(channel.listeners("user:registered")).to.have.length(0);
+
+    });
+
+    it("should be possible to register event handlers recursively", function () {
+
+        var path = __dirname + "/../fixtures/dir_13",
+            modules,
+            channel;
+
+        channel = new events.EventEmitter();
+
+        expect(channel.listeners("ad:viewed")).to.have.length(0);
+        expect(channel.listeners("ad:removed")).to.have.length(0);
+        expect(channel.listeners("user:account:locked")).to.have.length(0);
+
+        modules = simpleload(path, {
+            suffix: ".event.js",
+            decorate: "eventize",
+            recursive: true,
+            register: [channel, "on"]
+        });
+
+        expect(modules["ad:viewed"]()).to.equal("adViewed");
+        expect(modules["ad:removed"]()).to.equal("adRemoved");
+        expect(modules["user:registered"]()).to.equal("userRegistered");
+
+        expect(channel.listeners("ad:viewed")).to.have.length(1);
+        expect(channel.listeners("ad:removed")).to.have.length(1);
+        expect(channel.listeners("user:registered")).to.have.length(1);
+
+        channel.removeAllListeners();
+
+        expect(channel.listeners("ad:viewed")).to.have.length(0);
+        expect(channel.listeners("ad:removed")).to.have.length(0);
+        expect(channel.listeners("user:account:locked")).to.have.length(0);
 
     });
 
