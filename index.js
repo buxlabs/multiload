@@ -15,11 +15,11 @@ module.exports = function (path, cfg) {
     // in case an extension was provided
     // we use different loading method
     if (typeof cfg.extension === "string") {
-        modules = simpleload.extensionLoad(path, cfg.extension);
+        modules = simpleload.extensionLoad(path, cfg);
     } else if (typeof cfg.suffix === "string") {
-        modules = simpleload.suffixLoad(path, cfg.suffix);
+        modules = simpleload.suffixLoad(path, cfg);
     } else {
-        modules = simpleload.standardLoad(path);
+        modules = simpleload.standardLoad(path, cfg);
     }
 
     if (cfg.decorate) {

@@ -1,4 +1,4 @@
-# simpleload v0.5.4
+# simpleload v0.6.0
 
 Load multiple modules into an object or globally. Useful for repetitive require calls.
 
@@ -118,6 +118,21 @@ var simpleload = require("simpleload"),
         register: [channel, "on"]
     });
 // assert(modules.listeners["user:registered"].length === 1);
+```
+
+* `recursive` find modules in subfolders
+
+```javascript
+var simpleload = require("simpleload"),
+    events = require("events"),
+    channel = new events.EventEmitter(),
+    modules = simpleload(__dirname + "/events", {
+        suffix: "event.js",
+        decorate: "eventize",
+        register: [channel, "on"],
+        recursive: true
+    });
+// assert(modules.listeners["ad:created"].length === 1);
 ```
 
 Todo:

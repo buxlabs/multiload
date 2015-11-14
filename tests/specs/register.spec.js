@@ -63,13 +63,9 @@ describe("register", function () {
             register: [channel, "on"]
         });
 
-        expect(modules["ad:viewed"]()).to.equal("adViewed");
-        expect(modules["ad:removed"]()).to.equal("adRemoved");
-        expect(modules["user:registered"]()).to.equal("userRegistered");
-
         expect(channel.listeners("ad:viewed")).to.have.length(1);
         expect(channel.listeners("ad:removed")).to.have.length(1);
-        expect(channel.listeners("user:registered")).to.have.length(1);
+        expect(channel.listeners("user:account:locked")).to.have.length(1);
 
         channel.removeAllListeners();
 
