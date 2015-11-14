@@ -137,9 +137,12 @@ var simpleload = require("simpleload"),
 
 Todo:
 -----
-* more specs,
-* examples,
-* better docs,
-* more decorators,
-* support more file formats for extension option,
-* refactor code
+* add: specs,
+* add: examples,
+* add: docs,
+* add: decorators,
+* add: more formats for extension option,
+* add: coverage,
+* add: eslint,
+* update: history,
+* remove: jshint
