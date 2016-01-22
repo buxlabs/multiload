@@ -1,6 +1,6 @@
 # simpleload v0.6.0
 
-Load multiple modules into an object or globally. Useful for repetitive require calls.
+Load multiple modules at once, useful for repetitive require calls.
 
 ## Usage
 
@@ -140,6 +140,4 @@ Todo:
 * add: specs,
 * add: examples,
 * add: docs,
-* add: more formats for extension option,
-* add: coverage,
-* update: history
+* add: more formats for extension option
