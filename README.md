@@ -1,4 +1,6 @@
-# simpleload v0.6.0
+[![Build Status](https://travis-ci.org/emilos/simpleload.svg?branch=master)](https://travis-ci.org/emilos/simpleload)
+
+# simpleload v0.6.1
 
 Load multiple modules at once, useful for repetitive require calls.
 
