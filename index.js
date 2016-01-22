@@ -1,6 +1,6 @@
 "use strict";
 
-var simpleload = require("./lib");
+const simpleload = require("./lib");
 
 module.exports = function (path, cfg) {
 

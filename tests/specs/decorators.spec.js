@@ -3,9 +3,9 @@
 var expect     = require("chai").expect,
     simpleload = require("../../index.js");
 
-describe("decorators", function () {
+describe("decorators", () => {
 
-    it("should be possible to capitalize the names of the modules", function () {
+    it("should be possible to capitalize the names of the modules", () => {
 
         var path = __dirname + "/../fixtures/dir_07",
             modules;
@@ -22,7 +22,7 @@ describe("decorators", function () {
 
     });
 
-    it("should be possible to capitalize with a predefined function", function () {
+    it("should be possible to capitalize with a predefined function", () => {
 
         var path = __dirname + "/../fixtures/dir_07",
             modules;
@@ -37,7 +37,7 @@ describe("decorators", function () {
 
     });
 
-    it("should be possible to lowercase with a predefined function", function () {
+    it("should be possible to lowercase with a predefined function", () => {
 
         var path = __dirname + "/../fixtures/dir_08",
             modules;
@@ -52,7 +52,7 @@ describe("decorators", function () {
 
     });
 
-    it("should be possible to use the eventize decorator", function () {
+    it("should be possible to use the eventize decorator", () => {
 
         var path = __dirname + "/../fixtures/dir_12",
             modules;

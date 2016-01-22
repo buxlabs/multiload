@@ -4,9 +4,9 @@ var expect     = require("chai").expect,
     fs         = require("fs"),
     simpleload = require("../../index.js");
 
-describe("extension", function () {
+describe("extension", () => {
 
-    it("should be possible to load html files", function () {
+    it("should be possible to load html files", () => {
 
         var path = __dirname + "/../fixtures/dir_09",
             modules;

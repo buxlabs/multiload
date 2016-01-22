@@ -140,9 +140,6 @@ Todo:
 * add: specs,
 * add: examples,
 * add: docs,
-* add: decorators,
 * add: more formats for extension option,
 * add: coverage,
-* add: eslint,
-* update: history,
-* remove: jshint
+* update: history

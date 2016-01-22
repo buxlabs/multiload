@@ -4,9 +4,9 @@ var expect     = require("chai").expect,
     fs         = require("fs"),
     simpleload = require("../../index.js");
 
-describe("simpleload", function () {
+describe("simpleload", () => {
 
-    it("should load modules", function () {
+    it("should load modules", () => {
 
         var path = __dirname + "/../fixtures",
             modules, dirs, module;
@@ -22,7 +22,7 @@ describe("simpleload", function () {
 
     });
 
-    it("should load modules like require", function () {
+    it("should load modules like require", () => {
 
         var path = __dirname + "/../fixtures",
             modules;
@@ -35,7 +35,7 @@ describe("simpleload", function () {
 
     });
 
-    it("should load modules from different locations", function () {
+    it("should load modules from different locations", () => {
         var path = __dirname + "/../fixtures/dir_01",
             modules, dirs, module;
 

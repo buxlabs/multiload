@@ -3,9 +3,9 @@
 var expect     = require("chai").expect,
     simpleload = require("../../index.js");
 
-describe("error handling", function () {
+describe("error handling", () => {
 
-    it("should throw an error if such directory doesn't exist", function () {
+    it("should throw an error if such directory doesn't exist", () => {
 
         var exception,
             path = __dirname + "/../fixtures/dir_XX";
@@ -20,7 +20,7 @@ describe("error handling", function () {
 
     });
 
-    it("should throw an error if you want to override an existing global var", function () {
+    it("should throw an error if you want to override an existing global var", () => {
 
         var modules, exception,
             path = __dirname + "/../fixtures/dir_07";
@@ -49,7 +49,7 @@ describe("error handling", function () {
 
     });
 
-    it("should throw an error in case of an unsupported extension", function () {
+    it("should throw an error in case of an unsupported extension", () => {
 
         var exception,
             path = __dirname + "/../fixtures/dir_09";
@@ -69,7 +69,7 @@ describe("error handling", function () {
 
     });
 
-    it("should throw an error if no modules were found", function () {
+    it("should throw an error if no modules were found", () => {
 
         var exception,
             path = __dirname + "/../fixtures/dir_10";

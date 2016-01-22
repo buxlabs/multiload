@@ -3,9 +3,9 @@
 var expect     = require("chai").expect,
     simpleload = require("../../index.js");
 
-describe("recursive", function () {
+describe("recursive", () => {
 
-    it("should be possible to load modules recursively", function () {
+    it("should be possible to load modules recursively", () => {
 
         var path = __dirname + "/../fixtures/dir_14",
             modules;

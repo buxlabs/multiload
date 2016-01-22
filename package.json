@@ -1,10 +1,11 @@
 {
   "name": "simpleload",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "nodejs: simple module loader",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/specs/**/*.spec.js"
+    "test": "node_modules/.bin/mocha tests/specs/**/*.spec.js",
+    "eslint": "node_modules/.bin/eslint ."
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   "homepage": "https://github.com/emilos/simpleload",
   "devDependencies": {
     "chai": "*",
+    "eslint": "*",
     "mocha": "*"
   }
 }

@@ -3,9 +3,9 @@
 var expect     = require("chai").expect,
     simpleload = require("../../index.js");
 
-describe("exclude", function () {
+describe("exclude", () => {
 
-    it("should be possible to exclude given modules", function () {
+    it("should be possible to exclude given modules", () => {
 
         var path = __dirname + "/../fixtures/dir_11",
             loaded;
@@ -22,7 +22,7 @@ describe("exclude", function () {
 
     });
 
-    it("should be possible to exclude given modules when array is passed", function () {
+    it("should be possible to exclude given modules when array is passed", () => {
 
         var path = __dirname + "/../fixtures/dir_11",
             loaded;
