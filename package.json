@@ -1,11 +1,12 @@
 {
   "name": "simpleload",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "nodejs: simple module loader",
   "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/mocha tests/specs/**/*.spec.js",
-    "eslint": "node_modules/.bin/eslint ."
+    "eslint": "node_modules/.bin/eslint .",
+    "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- tests/specs/**/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "chai": "*",
     "eslint": "*",
+    "istanbul": "*",
     "mocha": "*"
   }
 }

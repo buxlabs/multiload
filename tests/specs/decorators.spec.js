@@ -68,4 +68,19 @@ describe("decorators", () => {
 
     });
 
+    it("should be possible to use the uppercase decorator", () => {
+
+        var path = __dirname + "/../fixtures/dir_08",
+            modules;
+
+        modules = simpleload(path, {
+            suffix: ".handler.js",
+            decorate: "uppercase"
+        });
+
+        expect(modules.BASE).to.be.a("string");
+        expect(modules.COMMON).to.be.a("string");
+
+    });
+
 });

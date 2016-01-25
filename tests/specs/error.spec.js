@@ -1,9 +1,23 @@
 "use strict";
 
-var expect     = require("chai").expect,
-    simpleload = require("../../index.js");
+const expect     = require("chai").expect;
+const simpleload = require("../../index.js");
 
 describe("error handling", () => {
+
+    it("should throw an error if path is not provided", () => {
+
+        var exception;
+
+        try {
+            simpleload();
+        } catch (e) {
+            exception = e;
+        }
+
+        expect(exception).to.be.an.instanceof(Error);
+
+    });
 
     it("should throw an error if such directory doesn't exist", () => {
 
@@ -84,4 +98,22 @@ describe("error handling", () => {
 
     });
 
+    it("should throw an error if a predefined decorator doesn't exist", () => {
+    
+        var exception,
+            path = __dirname + "/../fixtures/dir_08";
+
+        try {
+            simpleload(path, {
+                decorate: ";owercase"
+            });
+        } catch (e) {
+            exception = e;
+        }
+
+        expect(exception).to.be.an.instanceof(Error);
+
+    });
+
 });
+
