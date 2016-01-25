@@ -1,12 +1,12 @@
 "use strict";
 
-var expect = require("chai").expect,
-    events = require("events"),
-    simpleload = require("../../index.js");
+const expect = require("chai").expect;
+const events = require("events");
+const simpleload = require("../../index.js");
 
-describe("register", () => {
+describe("register", function () {
 
-    it("it should be possible to register loaded modules by name in given channel", () => {
+    it("it should be possible to register loaded modules by name in given channel", function () {
 
         var path = __dirname + "/../fixtures/dir_12",
             modules,
@@ -44,7 +44,7 @@ describe("register", () => {
 
     });
 
-    it("should be possible to register event handlers recursively", () => {
+    it("should be possible to register event handlers recursively", function () {
 
         var path = __dirname + "/../fixtures/dir_13",
             modules,

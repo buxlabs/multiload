@@ -1,11 +1,11 @@
 "use strict";
 
-var expect     = require("chai").expect,
-    simpleload = require("../../index.js");
+const expect     = require("chai").expect;
+const simpleload = require("../../index.js");
 
-describe("global", () => {
+describe("global", function () {
 
-    it("should be possible to expose the modules globally with the global flag set to true", () => {
+    it("should be possible to expose the modules globally with the global flag set to true", function () {
 
         var path = __dirname + "/../fixtures/dir_07",
             modules;
@@ -32,7 +32,7 @@ describe("global", () => {
 
     });
 
-    it("should be possible to override a global var if an override flag is passed", () => {
+    it("should be possible to override a global var if an override flag is passed", function () {
 
         var path = __dirname + "/../fixtures/dir_07",
             modules, exception;
@@ -61,7 +61,7 @@ describe("global", () => {
 
     });
 
-    it("should be possible to add modules to chosen global namespace", () => {
+    it("should be possible to add modules to chosen global namespace", function () {
 
         var path = __dirname + "/../fixtures/dir_07",
             modules;

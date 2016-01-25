@@ -1,11 +1,11 @@
 "use strict";
 
-var expect     = require("chai").expect,
-    simpleload = require("../../index.js");
+const expect     = require("chai").expect;
+const simpleload = require("../../index.js");
 
-describe("exclude", () => {
+describe("exclude", function () {
 
-    it("should be possible to exclude given modules", () => {
+    it("should be possible to exclude given modules", function () {
 
         var path = __dirname + "/../fixtures/dir_11",
             loaded;
@@ -22,7 +22,7 @@ describe("exclude", () => {
 
     });
 
-    it("should be possible to exclude given modules when array is passed", () => {
+    it("should be possible to exclude given modules when array is passed", function () {
 
         var path = __dirname + "/../fixtures/dir_11",
             loaded;

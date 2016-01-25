@@ -1,12 +1,12 @@
 "use strict";
 
-var expect     = require("chai").expect,
-    fs         = require("fs"),
-    simpleload = require("../../index.js");
+const expect     = require("chai").expect;
+const fs         = require("fs");
+const simpleload = require("../../index.js");
 
-describe("simpleload", () => {
+describe("simpleload", function () {
 
-    it("should load modules", () => {
+    it("should load modules", function () {
 
         var path = __dirname + "/../fixtures",
             modules, dirs, module;
@@ -22,7 +22,7 @@ describe("simpleload", () => {
 
     });
 
-    it("should load modules like require", () => {
+    it("should load modules like require", function () {
 
         var path = __dirname + "/../fixtures",
             modules;
@@ -35,7 +35,7 @@ describe("simpleload", () => {
 
     });
 
-    it("should load modules from different locations", () => {
+    it("should load modules from different locations", function () {
         var path = __dirname + "/../fixtures/dir_01",
             modules, dirs, module;
 

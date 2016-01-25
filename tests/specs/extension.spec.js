@@ -1,12 +1,12 @@
 "use strict";
 
-var expect     = require("chai").expect,
-    fs         = require("fs"),
-    simpleload = require("../../index.js");
+const expect     = require("chai").expect;
+const fs         = require("fs");
+const simpleload = require("../../index.js");
 
-describe("extension", () => {
+describe("extension", function () {
 
-    it("should be possible to load html files", () => {
+    it("should be possible to load html files", function () {
 
         var path = __dirname + "/../fixtures/dir_09",
             modules;

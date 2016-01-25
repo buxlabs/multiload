@@ -3,9 +3,9 @@
 const expect     = require("chai").expect;
 const simpleload = require("../../index.js");
 
-describe("error handling", () => {
+describe("error handling", function () {
 
-    it("should throw an error if path is not provided", () => {
+    it("should throw an error if path is not provided", function () {
 
         var exception;
 
@@ -19,7 +19,7 @@ describe("error handling", () => {
 
     });
 
-    it("should throw an error if such directory doesn't exist", () => {
+    it("should throw an error if such directory doesn't exist", function () {
 
         var exception,
             path = __dirname + "/../fixtures/dir_XX";
@@ -34,7 +34,7 @@ describe("error handling", () => {
 
     });
 
-    it("should throw an error if you want to override an existing global var", () => {
+    it("should throw an error if you want to override an existing global var", function () {
 
         var modules, exception,
             path = __dirname + "/../fixtures/dir_07";
@@ -63,7 +63,7 @@ describe("error handling", () => {
 
     });
 
-    it("should throw an error in case of an unsupported extension", () => {
+    it("should throw an error in case of an unsupported extension", function () {
 
         var exception,
             path = __dirname + "/../fixtures/dir_09";
@@ -83,7 +83,7 @@ describe("error handling", () => {
 
     });
 
-    it("should throw an error if no modules were found", () => {
+    it("should throw an error if no modules were found", function () {
 
         var exception,
             path = __dirname + "/../fixtures/dir_10";
@@ -98,7 +98,7 @@ describe("error handling", () => {
 
     });
 
-    it("should throw an error if a predefined decorator doesn't exist", () => {
+    it("should throw an error if a predefined decorator doesn't exist", function () {
     
         var exception,
             path = __dirname + "/../fixtures/dir_08";

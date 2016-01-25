@@ -1,11 +1,11 @@
 "use strict";
 
-var expect     = require("chai").expect,
-    simpleload = require("../../index.js");
+const expect     = require("chai").expect;
+const simpleload = require("../../index.js");
 
-describe("recursive", () => {
+describe("recursive", function () {
 
-    it("should be possible to load modules recursively", () => {
+    it("should be possible to load modules recursively", function () {
 
         var path = __dirname + "/../fixtures/dir_14",
             modules;

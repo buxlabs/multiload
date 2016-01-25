@@ -3,9 +3,9 @@
 var expect     = require("chai").expect,
     simpleload = require("../../index.js");
 
-describe("suffix", () => {
+describe("suffix", function () {
 
-    it("should be possible to filter out the modules", () => {
+    it("should be possible to filter out the modules", function () {
 
         var path = __dirname + "/../fixtures/dir_05",
             loaded;
@@ -18,7 +18,7 @@ describe("suffix", () => {
 
     });
 
-    it("should be possible to get the modules as an array of values", () => {
+    it("should be possible to get the modules as an array of values", function () {
 
         var path = __dirname + "/../fixtures/dir_05",
             values;
@@ -32,7 +32,7 @@ describe("suffix", () => {
 
     });
 
-    it("should match . in the beginning is matched correctly for suffix", () => {
+    it("should match . in the beginning is matched correctly for suffix", function () {
 
         var path = __dirname + "/../fixtures/dir_06",
             modules;
