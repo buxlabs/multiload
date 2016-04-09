@@ -20,4 +20,19 @@ describe("recursive", function () {
 
     });
 
+    it("should be possible to load modules from different folders recursively", function () {
+    
+        var path = __dirname + "/../fixtures/dir_15",
+            modules;
+
+        modules = simpleload(path, {
+            extension: "html",
+            recursive: true
+        });
+
+        expect(modules["en/terms-of-use"]).to.be.defined;
+        expect(modules["pl/terms-of-use"]).to.be.defined;
+
+    });
+
 });
