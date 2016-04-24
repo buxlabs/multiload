@@ -1,17 +1,15 @@
 "use strict";
 
-const expect     = require("chai").expect;
 const fs         = require("fs");
+const path       = require("path");
+const expect     = require("chai").expect;
 const simpleload = require("../../index.js");
 
 describe("extension", function () {
 
     it("should be possible to load html files", function () {
 
-        var path = __dirname + "/../fixtures/dir_09",
-            modules;
-
-        modules = simpleload(path, {
+        var modules = simpleload(path.join(__dirname, "/../fixtures/dir_09"), {
             extension: "html"
         });
 
@@ -21,17 +19,11 @@ describe("extension", function () {
         expect(modules.firstArticle).to.equal("<h1>Hello world</h1>");
         expect(modules.secondArticle).to.equal("<h1>Second article</h1>");
 
-        expect(modules.firstArticle).to.equal(fs.readFileSync(path + "/firstArticle.html", "utf-8"));
-        expect(modules.secondArticle).to.equal(fs.readFileSync(path + "/secondArticle.html", "utf-8"));
-
     });
 
     it("should be possible to load json files", function () {
 
-        var path = __dirname + "/../fixtures/dir_18",
-            modules;
-
-        modules = simpleload(path, {
+        var modules = simpleload(path.join(__dirname, "/../fixtures/dir_18"), {
             extension: "json"
         });
 

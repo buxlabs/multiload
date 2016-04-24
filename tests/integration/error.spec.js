@@ -1,45 +1,29 @@
 "use strict";
 
+const path       = require("path");
 const expect     = require("chai").expect;
 const simpleload = require("../../index.js");
 
 describe("error handling", function () {
 
     it("should throw an error if path is not provided", function () {
-
-        var exception;
-
-        try {
+        expect(function () {
             simpleload();
-        } catch (e) {
-            exception = e;
-        }
-
-        expect(exception).to.be.an.instanceof(Error);
-
+        }).to.throw();
     });
 
     it("should throw an error if such directory doesn't exist", function () {
-
-        var exception,
-            path = __dirname + "/../fixtures/dir_XX";
-
-        try {
-            simpleload(path);
-        } catch (e) {
-            exception = e;
-        }
-
-        expect(exception).to.be.an.instanceof(Error);
-
+        expect(function () {
+            simpleload(path.join(__dirname, "/../fixtures/dir_XX"));
+        }).to.throw();
     });
 
     it("should throw an error if you want to override an existing global var", function () {
 
-        var modules, exception,
-            path = __dirname + "/../fixtures/dir_07";
-
-        modules = simpleload(path, { suffix: "model.js", global: true });
+        var modules = simpleload(path.join(__dirname, "/../fixtures/dir_07"), {
+            suffix: "model.js",
+            global: true
+        });
 
         expect(modules.token).to.exist;
         expect(modules.user).to.exist;
@@ -47,13 +31,11 @@ describe("error handling", function () {
         expect(global.token).to.equal(modules.token);
         expect(global.user).to.equal(modules.user);
 
-        try {
-            simpleload(path, { suffix: "model.js", global: true });
-        } catch (e) {
-            exception = e;
-        }
-
-        expect(exception).to.be.an.instanceof(Error);
+        expect(function () {
+            simpleload(path.join(__dirname, "/../fixtures/dir_07"), { 
+                suffix: "model.js", global: true 
+            });
+        }).to.throw();
 
         delete global.token;
         delete global.user;
@@ -64,35 +46,17 @@ describe("error handling", function () {
     });
 
     it("should throw an error if no modules were found", function () {
-
-        var exception,
-            path = __dirname + "/../fixtures/dir_10";
-
-        try {
-            simpleload(path);
-        } catch (e) {
-            exception = e;
-        }
-
-        expect(exception.message.indexOf("no modules found")).to.not.equal(-1);
-
+        expect(function () {
+            simpleload(path.join(__dirname, "/../fixtures/dir_10"));
+        }).to.throw();
     });
 
     it("should throw an error if a predefined decorator doesn't exist", function () {
-    
-        var exception,
-            path = __dirname + "/../fixtures/dir_08";
-
-        try {
-            simpleload(path, {
+        expect(function () {
+            simpleload(path.join(__dirname, "/../fixtures/dir_08"), {
                 decorate: ";owercase"
             });
-        } catch (e) {
-            exception = e;
-        }
-
-        expect(exception).to.be.an.instanceof(Error);
-
+        }).to.throw();
     });
 
 });

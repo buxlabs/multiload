@@ -1,18 +1,19 @@
 "use strict";
 
-const expect     = require("chai").expect;
 const fs         = require("fs");
+const path       = require("path");
+const expect     = require("chai").expect;
 const simpleload = require("../../index.js");
 
 describe("simpleload", function () {
 
     it("should load modules", function () {
 
-        var path = __dirname + "/../fixtures/dir_17",
+        var dir = path.join(__dirname, "/../fixtures/dir_17"),
             modules, dirs, module;
 
-        modules = simpleload(path);
-        dirs = fs.readdirSync(path);
+        modules = simpleload(dir);
+        dirs = fs.readdirSync(dir);
 
         for (module in modules) {
             if (modules.hasOwnProperty(module)) {
@@ -24,10 +25,7 @@ describe("simpleload", function () {
 
     it("should load modules like require", function () {
 
-        var path = __dirname + "/../fixtures/dir_17",
-            modules;
-
-        modules = simpleload(path);
+        var modules = simpleload(path.join(__dirname, "/../fixtures/dir_17"));
 
         expect(modules.subdir_01).to.equal(require("../fixtures/dir_17/subdir_01"));
         expect(modules.subdir_02).to.equal(require("../fixtures/dir_17/subdir_02"));
@@ -35,11 +33,11 @@ describe("simpleload", function () {
     });
 
     it("should load modules from different locations", function () {
-        var path = __dirname + "/../fixtures/dir_01",
+        var dir = path.join(__dirname, "/../fixtures/dir_01"),
             modules, dirs, module;
 
-        modules = simpleload(path);
-        dirs = fs.readdirSync(path);
+        modules = simpleload(dir);
+        dirs = fs.readdirSync(dir);
 
         for (module in modules) {
             if (modules.hasOwnProperty(module)) {

@@ -1,5 +1,6 @@
 "use strict";
 
+const path       = require("path");
 const expect     = require("chai").expect;
 const simpleload = require("../../index.js");
 
@@ -7,10 +8,7 @@ describe("recursive", function () {
 
     it("should be possible to load modules recursively", function () {
 
-        var path = __dirname + "/../fixtures/dir_14",
-            modules;
-
-        modules = simpleload(path, { 
+        var modules = simpleload(path.join(__dirname, "/../fixtures/dir_14"), { 
             suffix: "event.js",
             recursive: true
         });
@@ -21,11 +19,8 @@ describe("recursive", function () {
     });
 
     it("should be possible to load modules from different folders recursively (example 1)", function () {
-    
-        var path = __dirname + "/../fixtures/dir_15",
-            modules;
 
-        modules = simpleload(path, {
+        var modules = simpleload(path.join(__dirname, "/../fixtures/dir_15"), {
             extension: "html",
             recursive: true
         });
@@ -37,10 +32,7 @@ describe("recursive", function () {
 
     it("should be possible to load modules from different folders recursively (example 2)", function () {
 
-        var path = __dirname + "/../fixtures/dir_16",
-            modules;
-
-        modules = simpleload(path, {
+        var modules = simpleload(path.join(__dirname, "/../fixtures/dir_16"), {
             extension: "html",
             recursive: true
         });
@@ -57,13 +49,11 @@ describe("recursive", function () {
 
     });
 
-    xit("should be possible to load modules from different folders recursively (example 3)", function () {
+    it("should be possible to load modules from different folders recursively (example 3)", function () {
 
-        var path = __dirname + "/../fixtures/dir_19",
-            modules;
-
-        modules = simpleload(path, {
-            recursive: true
+        var modules = simpleload(path.join(__dirname, "/../fixtures/dir_19"), {
+            recursive: true,
+            suffix: "event.js"
         });
 
         expect(modules["logged.event"]).to.be.defined;

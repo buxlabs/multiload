@@ -1,5 +1,6 @@
 "use strict";
 
+const path       = require("path");
 const expect     = require("chai").expect;
 const simpleload = require("../../index.js");
 
@@ -7,10 +8,7 @@ describe("decorators", function () {
 
     it("should be possible to capitalize the names of the modules", function () {
 
-        var path = __dirname + "/../fixtures/dir_07",
-            modules;
-
-        modules = simpleload(path, { 
+        var modules = simpleload(path.join(__dirname, "/../fixtures/dir_07"), { 
             suffix: "model.js", 
             decorate: function (name) {
                 return name[0].toUpperCase() + name.slice(1);
@@ -24,10 +22,7 @@ describe("decorators", function () {
 
     it("should be possible to capitalize with a predefined function", function () {
 
-        var path = __dirname + "/../fixtures/dir_07",
-            modules;
-
-        modules = simpleload(path, { 
+        var modules = simpleload(path.join(__dirname, "/../fixtures/dir_07"), { 
             suffix: ".model.js", 
             decorate: "capitalize"
         });
@@ -39,10 +34,7 @@ describe("decorators", function () {
 
     it("should be possible to lowercase with a predefined function", function () {
 
-        var path = __dirname + "/../fixtures/dir_08",
-            modules;
-
-        modules = simpleload(path, {
+        var modules = simpleload(path.join(__dirname, "/../fixtures/dir_08"), {
             suffix: ".handler.js",
             decorate: "lowercase"
         });
@@ -54,10 +46,7 @@ describe("decorators", function () {
 
     it("should be possible to use the eventize decorator", function () {
 
-        var path = __dirname + "/../fixtures/dir_12",
-            modules;
-
-        modules = simpleload(path, {
+        var modules = simpleload(path.join(__dirname, "/../fixtures/dir_12"), {
             suffix: ".event.js",
             decorate: "eventize"
         });
@@ -70,10 +59,7 @@ describe("decorators", function () {
 
     it("should be possible to use the uppercase decorator", function () {
 
-        var path = __dirname + "/../fixtures/dir_08",
-            modules;
-
-        modules = simpleload(path, {
+        var modules = simpleload(path.join(__dirname, "/../fixtures/dir_08"), {
             suffix: ".handler.js",
             decorate: "uppercase"
         });

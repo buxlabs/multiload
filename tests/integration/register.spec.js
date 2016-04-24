@@ -1,16 +1,15 @@
 "use strict";
 
-const expect = require("chai").expect;
+const path   = require("path");
 const events = require("events");
+const expect = require("chai").expect;
 const simpleload = require("../../index.js");
 
 describe("register", function () {
 
     it("it should be possible to register loaded modules by name in given channel", function () {
 
-        var path = __dirname + "/../fixtures/dir_12",
-            modules,
-            channel;
+        var channel, modules;
 
         channel = new events.EventEmitter();
   
@@ -18,7 +17,7 @@ describe("register", function () {
         expect(channel.listeners("user:forgot:password")).to.have.length(0);
         expect(channel.listeners("user:registered")).to.have.length(0);
   
-        modules = simpleload(path, {
+        modules = simpleload(path.join(__dirname, "/../fixtures/dir_12"), {
             suffix: ".event.js",
             decorate: "eventize",
             register: [channel, "on"]
@@ -46,9 +45,7 @@ describe("register", function () {
 
     it("should be possible to register event handlers recursively", function () {
 
-        var path = __dirname + "/../fixtures/dir_13",
-            modules,
-            channel;
+        var channel, modules;
 
         channel = new events.EventEmitter();
 
@@ -56,7 +53,7 @@ describe("register", function () {
         expect(channel.listeners("ad:removed")).to.have.length(0);
         expect(channel.listeners("user:account:locked")).to.have.length(0);
 
-        modules = simpleload(path, {
+        modules = simpleload(path.join(__dirname, "/../fixtures/dir_13"), {
             suffix: ".event.js",
             decorate: "eventize",
             recursive: true,
@@ -77,10 +74,8 @@ describe("register", function () {
 
     it("should throw an error if the register format is incorrect", function () {
 
-        var path = __dirname + "/../fixtures/dir_13";
-
         expect(function () {
-            simpleload(path, {
+            simpleload(path.join(__dirname, "/../fixtures/dir_13"), {
                 suffix: ".event.js",
                 decorate: "eventize",
                 recursive: true,
