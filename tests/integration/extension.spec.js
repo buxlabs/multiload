@@ -26,5 +26,19 @@ describe("extension", function () {
 
     });
 
+    it("should be possible to load json files", function () {
+
+        var path = __dirname + "/../fixtures/dir_18",
+            modules;
+
+        modules = simpleload(path, {
+            extension: "json"
+        });
+
+        expect(JSON.parse(modules.data_01)).to.deep.equal({ hello: "world" });
+        expect(JSON.parse(modules.data_02)).to.deep.equal({ world: "hello" });
+
+    });
+
 });
 

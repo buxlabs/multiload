@@ -75,4 +75,19 @@ describe("register", function () {
 
     });
 
+    it("should throw an error if the register format is incorrect", function () {
+
+        var path = __dirname + "/../fixtures/dir_13";
+
+        expect(function () {
+            simpleload(path, {
+                suffix: ".event.js",
+                decorate: "eventize",
+                recursive: true,
+                register: true
+            });
+        }).to.throw();
+
+    });
+
 });

@@ -4,9 +4,9 @@
   "description": "nodejs: simple module loader",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha tests/specs/**/*.spec.js",
+    "test": "node_modules/.bin/mocha tests/**/*.spec.js",
     "eslint": "node_modules/.bin/eslint .",
-    "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- tests/specs/**/*.spec.js"
+    "coverage": "node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha -- tests/**/*.spec.js"
   },
   "repository": {
     "type": "git",

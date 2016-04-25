@@ -1,3 +1,8 @@
+0.7.0 / 2016-04-25
+==================
+
+  * add: load more formats via the `extension` option
+
 0.6.2 / 2016-01-25
 ==================
 

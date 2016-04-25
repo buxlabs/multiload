@@ -57,4 +57,20 @@ describe("recursive", function () {
 
     });
 
+    xit("should be possible to load modules from different folders recursively (example 3)", function () {
+
+        var path = __dirname + "/../fixtures/dir_19",
+            modules;
+
+        modules = simpleload(path, {
+            recursive: true
+        });
+
+        expect(modules["logged.event"]).to.be.defined;
+        expect(modules["article/created.event"]).to.be.defined;
+        expect(modules["user/account/deleted.event"]).to.be.defined;
+        expect(modules["user/account/locked.event"]).to.be.defined;
+
+    });
+
 });

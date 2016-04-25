@@ -61,6 +61,27 @@ describe("global", function () {
 
     });
 
+    it("should throw an error if a global var is going to be overriden but no flag is passed", function () {
+
+        var path = __dirname + "/../fixtures/dir_07",
+            modules, exception;
+
+        modules = simpleload(path, { suffix: "model.js", namespace: "models", global: true });
+
+        expect(modules.token).to.exist;
+        expect(modules.user).to.exist;
+
+        expect(global.models.token).to.equal(modules.token);
+        expect(global.models.user).to.equal(modules.user);
+
+        expect(function () {
+            simpleload(path, { suffix: "model.js", namespace: "models", global: true });
+        }).to.throw();
+
+        delete global.models;
+
+    });
+
     it("should be possible to add modules to chosen global namespace", function () {
 
         var path = __dirname + "/../fixtures/dir_07",

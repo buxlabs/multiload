@@ -63,26 +63,6 @@ describe("error handling", function () {
 
     });
 
-    it("should throw an error in case of an unsupported extension", function () {
-
-        var exception,
-            path = __dirname + "/../fixtures/dir_09";
-
-        try {
-            simpleload(path, {
-                extension: "exe"
-            });
-        } catch (e) {
-            exception = e;
-        }
-        // expect that the exception will occur
-        expect(exception).to.be.an.instanceof(Error);
-        // we expect that the error message will contain the
-        // extension name
-        expect(exception.message.indexOf("exe")).to.not.equal(-1);
-
-    });
-
     it("should throw an error if no modules were found", function () {
 
         var exception,

@@ -39,4 +39,16 @@ describe("exclude", function () {
 
     });
 
+    it("shouldn't exclude if falsy option was falled", function () {
+
+        var path = __dirname + "/../fixtures/dir_11",
+            loaded;
+
+        loaded = simpleload(path, { suffix: "service.js", exclude: false });
+        expect(loaded.base === require("../fixtures/dir_11/base.service"));
+        expect(loaded.other === require("../fixtures/dir_11/other.service"));
+        expect(Object.keys(loaded)).to.have.length(2);
+
+    });
+
 });

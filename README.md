@@ -139,7 +139,5 @@ var simpleload = require("simpleload"),
 
 Todo:
 -----
-* add: specs,
 * add: examples,
-* add: docs,
-* add: more formats for extension option
+* add: docs

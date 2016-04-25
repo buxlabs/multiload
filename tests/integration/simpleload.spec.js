@@ -8,7 +8,7 @@ describe("simpleload", function () {
 
     it("should load modules", function () {
 
-        var path = __dirname + "/../fixtures",
+        var path = __dirname + "/../fixtures/dir_17",
             modules, dirs, module;
 
         modules = simpleload(path);
@@ -24,14 +24,13 @@ describe("simpleload", function () {
 
     it("should load modules like require", function () {
 
-        var path = __dirname + "/../fixtures",
+        var path = __dirname + "/../fixtures/dir_17",
             modules;
 
         modules = simpleload(path);
 
-        expect(modules.dir_02).to.equal(require("../fixtures/dir_02"));
-        expect(modules.dir_03).to.equal(require("../fixtures/dir_03"));
-        expect(modules.dir_04).to.equal(require("../fixtures/dir_04"));
+        expect(modules.subdir_01).to.equal(require("../fixtures/dir_17/subdir_01"));
+        expect(modules.subdir_02).to.equal(require("../fixtures/dir_17/subdir_02"));
 
     });
 
