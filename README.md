@@ -1,8 +1,7 @@
 [![Build Status](https://travis-ci.org/emilos/simpleload.svg?branch=master)](https://travis-ci.org/emilos/simpleload)
 [![Coverage Status](https://coveralls.io/repos/github/emilos/simpleload/badge.svg?branch=master)](https://coveralls.io/github/emilos/simpleload?branch=master)
 
-
-# simpleload v0.7.0
+# simpleload v0.7.1
 
 Load multiple modules at once, useful for repetitive require calls.
 
@@ -67,7 +66,7 @@ require("simpleload")(__dirname + "/models", {
 // assert(Model.User === require("./models/user.model"));
 ```
 
-* `decorate` process the name of the loaded modules, you can also use predefined functions, (capitalize, lowercase and eventize)
+* `decorate` process the name of the loaded modules, you can also use predefined functions, (capitalize, uppercase, lowercase, camelize and eventize)
 
 ```javascript
 var simpleload = require("simpleload"),
@@ -142,4 +141,5 @@ var simpleload = require("simpleload"),
 Todo:
 -----
 * add: examples,
-* add: docs
+* add: docs,
+* add: lazy loading option

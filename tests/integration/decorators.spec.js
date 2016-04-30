@@ -69,4 +69,15 @@ describe("decorators", function () {
 
     });
 
+    it("should be possible to use the camelize decorator", function () {
+
+        var modules = simpleload(path.join(__dirname, "/../fixtures/dir_21"), { 
+                suffix: "js",
+                decorate: "camelize"
+            });
+        expect(modules.errorHandler).to.exist;
+        expect(modules.myPlugin).to.exist;
+
+    });
+
 });
