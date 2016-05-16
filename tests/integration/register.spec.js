@@ -60,6 +60,8 @@ describe("register", function () {
             register: [channel, "on"]
         });
 
+        console.log(modules);
+
         expect(channel.listeners("ad:viewed")).to.have.length(1);
         expect(channel.listeners("ad:removed")).to.have.length(1);
         expect(channel.listeners("user:account:locked")).to.have.length(1);

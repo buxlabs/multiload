@@ -143,3 +143,4 @@ Todo:
 * add: examples,
 * add: docs,
 * add: lazy loading option
+* edit: replace chai, mocha and istanbul with tap
