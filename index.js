@@ -14,7 +14,9 @@ module.exports = function (path, cfg) {
 
     // in case an extension was provided
     // we use different loading method
-    if (typeof cfg.extension === "string") {
+    if (cfg.lazy) {
+        modules = simpleload.lazyLoad(path, cfg);
+    } else if (typeof cfg.extension === "string") {
         modules = simpleload.extensionLoad(path, cfg);
     } else if (typeof cfg.suffix === "string") {
         modules = simpleload.suffixLoad(path, cfg);
