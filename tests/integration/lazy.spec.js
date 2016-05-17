@@ -5,7 +5,7 @@ const assert = require("assert");
 
 describe("lazy", function () {
 
-    it("should reserve given namespaces", function () {
+    it("should reserve namespaces based on dev dependencies", function () {
 
         var plugins = simpleload(__dirname + "/../fixtures/dir_22/package.json", { lazy: true });
 
@@ -14,6 +14,14 @@ describe("lazy", function () {
         assert(plugins.istanbul, "istanbul should be defined");
         assert(plugins.mocha, "mocha should be defined");
         assert(plugins.coveralls, "coveralls should be defined");
+
+    });
+
+    it("should reserve namespaces based on dependencies", function () {
+
+        var plugins = simpleload(__dirname + "/../fixtures/dir_23/package.json", { lazy: true });
+
+        assert(plugins.express, "express should be defined");
 
     });
 
@@ -26,5 +34,6 @@ describe("lazy", function () {
         assert(eslint, "eslint should be loaded on demand");
 
     });
+
     
 });
