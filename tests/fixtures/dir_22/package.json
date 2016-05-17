@@ -1,0 +1,35 @@
+{
+  "name": "test",
+  "version": "0.7.2",
+  "description": "nodejs: simple module loader",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha tests/**/*.spec.js",
+    "eslint": "node_modules/.bin/eslint .",
+    "coverage": "node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha -- tests/**/*.spec.js",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/test/test.git"
+  },
+  "keywords": [
+    "test",
+    "autoload",
+    "autoloader",
+    "multirequire"
+  ],
+  "author": "test <test@test.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/test/test/issues"
+  },
+  "homepage": "https://github.com/test/test",
+  "devDependencies": {
+    "chai": "*",
+    "eslint": "*",
+    "istanbul": "*",
+    "mocha": "*",
+    "coveralls": "*"
+  }
+}
