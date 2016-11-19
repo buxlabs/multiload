@@ -1,5 +1,5 @@
 {
-  "name": "simpleload",
+  "name": "@buxlabs/simpleload",
   "version": "0.7.3",
   "description": "nodejs: simple module loader",
   "main": "index.js",
