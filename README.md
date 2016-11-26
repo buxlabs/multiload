@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/emilos/simpleload.svg?branch=master)](https://travis-ci.org/emilos/simpleload)
-[![Coverage Status](https://coveralls.io/repos/github/emilos/simpleload/badge.svg?branch=master)](https://coveralls.io/github/emilos/simpleload?branch=master)
+[![Build Status](https://travis-ci.org/buxlabs/simpleload.svg?branch=master)](https://travis-ci.org/emilos/simpleload)
 
 # simpleload v0.7.3
 
