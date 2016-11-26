@@ -1,6 +1,10 @@
 [![Build Status](https://travis-ci.org/buxlabs/simpleload.svg?branch=master)](https://travis-ci.org/emilos/simpleload)
 
-# buxlabs.simpleload v0.7.4
+# simpleload v0.7.4
+
+```
+npm install @buxlabs/simpleload
+```
 
 Load multiple modules at once, useful for repetitive require calls.
 
