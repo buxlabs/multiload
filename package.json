@@ -19,17 +19,17 @@
     "autoloader",
     "multirequire"
   ],
-  "author": "emilos <emil@ajdyna.com>",
+  "author": "Emil Ajdyna <emil@ajdyna.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/buxlabs/simpleload/issues"
   },
   "homepage": "https://github.com/buxlabs/simpleload",
   "devDependencies": {
-    "chai": "*",
-    "eslint": "*",
-    "istanbul": "*",
-    "mocha": "*",
-    "coveralls": "*"
+    "chai": "3.5.0",
+    "coveralls": "2.11.15",
+    "eslint": "3.11.0",
+    "istanbul": "0.4.5",
+    "mocha": "3.2.0"
   }
 }
