@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/emilos/simpleload.git"
+    "url": "git://github.com/buxlabs/simpleload.git"
   },
   "keywords": [
     "simpleload",
@@ -22,9 +22,9 @@
   "author": "emilos <emil@ajdyna.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/emilos/simpleload/issues"
+    "url": "https://github.com/buxlabs/simpleload/issues"
   },
-  "homepage": "https://github.com/emilos/simpleload",
+  "homepage": "https://github.com/buxlabs/simpleload",
   "devDependencies": {
     "chai": "*",
     "eslint": "*",
