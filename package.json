@@ -1,13 +1,13 @@
 {
   "name": "@buxlabs/simpleload",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "description": "nodejs: simple module loader",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha tests/**/*.spec.js",
-    "eslint": "node_modules/.bin/eslint .",
-    "coverage": "node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha -- tests/**/*.spec.js",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+    "test": "node_modules/.bin/ava test/spec/**/*.js"
+  },
+  "engines": {
+    "node": ">=6.9.1"
   },
   "repository": {
     "type": "git",
@@ -26,10 +26,6 @@
   },
   "homepage": "https://github.com/buxlabs/simpleload",
   "devDependencies": {
-    "chai": "3.5.0",
-    "coveralls": "2.11.15",
-    "eslint": "3.11.1",
-    "istanbul": "0.4.5",
-    "mocha": "3.2.0"
+    "ava": "0.17.0"
   }
 }
