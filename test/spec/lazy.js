@@ -8,7 +8,7 @@ test('should reserve namespaces based on dev dependencies', t => {
     t.truthy(plugins.eslint, 'eslint should be available');
     t.truthy(plugins.istanbul, 'istanbul should be defined');
     t.truthy(plugins.mocha, 'ava should be defined');
-    t.truthy(plugins.ava, 'coveralls should be defined');
+    t.truthy(plugins.coveralls, 'coveralls should be defined');
 });
 
 test('should reserve namespaces based on dependencies', t => {

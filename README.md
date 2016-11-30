@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/buxlabs/simpleload.svg?branch=master)](https://travis-ci.org/emilos/simpleload)
 
-# simpleload v0.7.6
+# simpleload v0.7.7
 
 ```
 npm install @buxlabs/simpleload

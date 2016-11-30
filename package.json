@@ -1,6 +1,6 @@
 {
   "name": "@buxlabs/simpleload",
-  "version": "0.7.6",
+  "version": "0.7.7",
   "description": "nodejs: simple module loader",
   "main": "index.js",
   "scripts": {
