@@ -1,4 +1,4 @@
-# simpleload v0.7.7
+# simpleload
 
 [![Build Status](https://api.travis-ci.org/buxlabs/simpleload.svg?branch=master)](https://api.travis-ci.org/buxlabs/simpleload.svg?branch=master)
 
