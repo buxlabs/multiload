@@ -1,13 +1,14 @@
 {
   "name": "@buxlabs/simpleload",
-  "version": "0.7.7",
+  "version": "1.0.0",
   "description": "nodejs: simple module loader",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/ava test/spec/**/*.js"
+    "test": "ava test/spec/**/*.js",
+    "coverage": "nyc npm test"
   },
   "engines": {
-    "node": ">=6.9.1"
+    "node": ">=6.10.2"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
   },
   "homepage": "https://github.com/buxlabs/simpleload",
   "devDependencies": {
-    "ava": "0.19.1"
+    "ava": "0.19.1",
+    "nyc": "10.3.0"
   }
 }

@@ -141,9 +141,3 @@ var simpleload = require("simpleload"),
 // assert(modules.listeners["ad:created"].length === 1);
 ```
 
-Todo:
------
-* add: examples,
-* add: docs,
-* add: lazy loading option
-* edit: replace chai, mocha and istanbul with tap
