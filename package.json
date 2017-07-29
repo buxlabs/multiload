@@ -28,6 +28,6 @@
   "homepage": "https://github.com/buxlabs/simpleload",
   "devDependencies": {
     "ava": "0.21.0",
-    "nyc": "11.0.3"
+    "nyc": "11.1.0"
   }
 }
