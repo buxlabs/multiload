@@ -1,3 +1,9 @@
+2.0.0 / 2017-11-11
+==================
+  
+  * add: rollup
+  * remove: load methods which use require
+
 0.7.7 / 2016-11-30
 ==================
 

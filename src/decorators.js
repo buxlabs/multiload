@@ -1,5 +1,3 @@
-"use strict";
-
 var decorators = {
     capitalize (string) {
         return string[0].toUpperCase() + string.slice(1);
@@ -22,7 +20,7 @@ var decorators = {
     }
 };
 
-module.exports = {
+export default {
 
     predefined (modules, name) {
         var decorator = decorators[name];

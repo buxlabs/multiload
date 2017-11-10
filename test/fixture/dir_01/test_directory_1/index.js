@@ -1,1 +1,0 @@
-module.exports = "diff_loc_string1";

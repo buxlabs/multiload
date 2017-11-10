@@ -1,14 +1,16 @@
 {
   "name": "@buxlabs/simpleload",
-  "version": "1.0.1",
-  "description": "nodejs: simple module loader",
+  "version": "2.0.0",
+  "description": "nodejs: simple file loader",
   "main": "index.js",
   "scripts": {
-    "test": "ava test/spec/**/*.js",
+    "build": "rollup --config config.js",
+    "test": "npm run build -- --silent && ava test/spec/**/*.js",
     "coverage": "nyc npm test"
   },
   "engines": {
-    "node": ">=6.10.2"
+    "node": ">=8.9.1",
+    "npm": ">=5.5.1"
   },
   "repository": {
     "type": "git",
@@ -17,8 +19,7 @@
   "keywords": [
     "simpleload",
     "autoload",
-    "autoloader",
-    "multirequire"
+    "autoloader"
   ],
   "author": "Emil Ajdyna <emil@ajdyna.com>",
   "license": "MIT",
@@ -27,7 +28,9 @@
   },
   "homepage": "https://github.com/buxlabs/simpleload",
   "devDependencies": {
-    "ava": "0.23.0",
-    "nyc": "11.2.0"
+    "ava": "^0.23.0",
+    "eslint": "^4.11.0",
+    "nyc": "^11.3.0",
+    "rollup": "^0.51.3"
   }
 }

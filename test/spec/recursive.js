@@ -1,16 +1,6 @@
 import test from 'ava';
 import path from 'path';
-import simpleload from '../../index';
-
-test('should be possible to load modules recursively', t => {
-    var modules = simpleload(path.join(__dirname, '/../fixture/dir_14'), { 
-        suffix: 'event.js',
-        recursive: true
-    });
-
-    t.truthy(modules['ad/created']);
-    t.truthy(modules['user/created']);
-});
+import simpleload from '../../build';
 
 test('should be possible to load modules from different folders recursively (example 1)', t => {
     var modules = simpleload(path.join(__dirname, '/../fixture/dir_15'), {
@@ -37,16 +27,4 @@ test('should be possible to load modules from different folders recursively (exa
     t.truthy(modules['pl/sadzonka-dwuletnia-25-30cm']);
     t.truthy(modules['pl/sadzonka-roczna-10-15cm']);
     t.truthy(modules['pl/sadzonka-trzyletnia-30-35cm']);
-});
-
-test('should be possible to load modules from different folders recursively (example 3)', t => {
-    var modules = simpleload(path.join(__dirname, '/../fixture/dir_19'), {
-        recursive: true,
-        suffix: 'event.js'
-    });
-    
-    t.truthy(modules['logged']);
-    t.truthy(modules['article/created']);
-    t.truthy(modules['user/account/deleted']);
-    t.truthy(modules['user/account/locked']);
 });

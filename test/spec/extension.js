@@ -1,10 +1,10 @@
 import test from 'ava';
 import fs from 'fs';
 import path from 'path';
-import simpleload from '../../index';
+import simpleload from '../../build';
 
 test('should be possible to load html files', t => {
-    var modules = simpleload(path.join(__dirname, '/../fixture/dir_09'), {
+    var modules = simpleload(path.join(__dirname, '../fixture/dir_09'), {
         extension: 'html'
     });
 
@@ -16,7 +16,7 @@ test('should be possible to load html files', t => {
 });
 
 test('should be possible to load files with extension when a folder exists', t => {
-    var modules = simpleload(path.join(__dirname + '/../fixture/dir_24'), {
+    var modules = simpleload(path.join(__dirname, '../fixture/dir_24'), {
         extension: 'html'
     });
 
@@ -28,7 +28,7 @@ test('should be possible to load files with extension when a folder exists', t =
 });
 
 test('should be possible to load json files', t => {
-    var modules = simpleload(path.join(__dirname, '/../fixture/dir_18'), {
+    var modules = simpleload(path.join(__dirname, '../fixture/dir_18'), {
         extension: 'json'
     });
 

@@ -1,8 +1,8 @@
 "use strict";
 
-const simpleload = require("./lib");
+import simpleload from './src/index'
 
-module.exports = function (path, cfg) {
+export default function load (path, cfg) {
 
     var modules;
 
@@ -12,33 +12,16 @@ module.exports = function (path, cfg) {
 
     cfg = typeof cfg ==="object" && !Array.isArray(cfg) ? cfg : {};
 
-    // in case an extension was provided
-    // we use different loading method
-    if (cfg.lazy) {
-        modules = simpleload.lazyLoad(path, cfg);
-    } else if (typeof cfg.extension === "string") {
+    if (typeof cfg.extension === "string") {
         modules = simpleload.extensionLoad(path, cfg);
-    } else if (typeof cfg.suffix === "string") {
-        modules = simpleload.suffixLoad(path, cfg);
-    } else {
-        modules = simpleload.standardLoad(path, cfg);
     }
 
     if (cfg.decorate) {
         simpleload.decorate(modules, cfg);
     }
 
-    // expose the modules globally
-    if (cfg.global) {
-        simpleload.expose(modules, cfg);
-    }
-
     if (cfg.exclude) {
         modules = simpleload.exclude(modules, cfg.exclude);
-    }
-
-    if (cfg.register) {
-        simpleload.register(modules, cfg.register);
     }
 
     // check if there's at least one module that has been loaded
