@@ -1,3 +1,13 @@
+2.0.2 / 2018-12-10
+==================
+
+  * edit: rename library to multiload
+  * edit: update deps
+  * edit: update the build
+  * add: pure-utilities
+  * add: standard
+  * remove: eslint
+
 2.0.1 / 2017-11-19
 ==================
 
@@ -5,7 +15,7 @@
 
 2.0.0 / 2017-11-11
 ==================
-  
+
   * add: rollup
   * remove: load methods which use require
 

@@ -1,9 +1,16 @@
+import resolve from 'rollup-plugin-node-resolve'
+import commonjs from 'rollup-plugin-commonjs'
+
 export default {
   input: 'index.js',
   output: {
     file: 'build/index.js',
-    format: 'cjs'
+    format: 'cjs',
+    interop: false
   },
-  external: ['fs', 'path'],
-  interop: false
+  plugins: [
+    resolve(),
+    commonjs()
+  ],
+  external: ['fs', 'path']
 }

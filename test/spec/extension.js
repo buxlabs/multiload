@@ -1,38 +1,36 @@
-import test from 'ava';
-import fs from 'fs';
-import path from 'path';
-import simpleload from '../../build';
+import test from 'ava'
+import path from 'path'
+import multiload from '../../build'
 
-test('should be possible to load html files', t => {
-    var modules = simpleload(path.join(__dirname, '../fixture/dir_09'), {
-        extension: 'html'
-    });
+test('should be possible to load html files', assert => {
+  var modules = multiload(path.join(__dirname, '../fixture/dir_09'), {
+    extension: 'html'
+  })
 
-    t.truthy(typeof modules.firstArticle === 'string');
-    t.truthy(typeof modules.secondArticle === 'string');
+  assert.truthy(typeof modules.firstArticle === 'string')
+  assert.truthy(typeof modules.secondArticle === 'string')
 
-    t.truthy(modules.firstArticle === '<h1>Hello world</h1>');
-    t.truthy(modules.secondArticle === '<h1>Second article</h1>');
-});
+  assert.truthy(modules.firstArticle === '<h1>Hello world</h1>')
+  assert.truthy(modules.secondArticle === '<h1>Second article</h1>')
+})
 
-test('should be possible to load files with extension when a folder exists', t => {
-    var modules = simpleload(path.join(__dirname, '../fixture/dir_24'), {
-        extension: 'html'
-    });
+test('should be possible to load files with extension when a folder exists', assert => {
+  var modules = multiload(path.join(__dirname, '../fixture/dir_24'), {
+    extension: 'html'
+  })
 
-    t.truthy(typeof modules.firstArticle === 'string');
-    t.truthy(typeof modules.secondArticle === 'string');
+  assert.truthy(typeof modules.firstArticle === 'string')
+  assert.truthy(typeof modules.secondArticle === 'string')
 
-    t.truthy(modules.firstArticle === 'hello world1');
-    t.truthy(modules.secondArticle === 'hello world2');
-});
+  assert.truthy(modules.firstArticle === 'hello world1')
+  assert.truthy(modules.secondArticle === 'hello world2')
+})
 
-test('should be possible to load json files', t => {
-    var modules = simpleload(path.join(__dirname, '../fixture/dir_18'), {
-        extension: 'json'
-    });
+test('should be possible to load json files', assert => {
+  var modules = multiload(path.join(__dirname, '../fixture/dir_18'), {
+    extension: 'json'
+  })
 
-    t.deepEqual(JSON.parse(modules.data_01), { hello: 'world' });
-    t.deepEqual(JSON.parse(modules.data_02), { world: 'hello' });
-});
-
+  assert.deepEqual(JSON.parse(modules.data_01), { hello: 'world' })
+  assert.deepEqual(JSON.parse(modules.data_02), { world: 'hello' })
+})

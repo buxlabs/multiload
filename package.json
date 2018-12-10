@@ -1,36 +1,47 @@
 {
-  "name": "@buxlabs/simpleload",
-  "version": "2.0.1",
+  "name": "multiload",
+  "version": "2.0.2",
   "description": "nodejs: simple file loader",
   "main": "build/index.js",
   "scripts": {
     "build": "rollup --config config.js",
-    "test": "npm run build -- --silent && ava test/spec/**/*.js",
-    "coverage": "nyc npm test"
+    "pretest": "npm run build",
+    "test": "ava test/spec/**/*.js",
+    "coverage": "nyc npm test",
+    "lint": "standard"
   },
   "engines": {
-    "node": ">=8.9.1",
-    "npm": ">=5.5.1"
+    "node": ">=10.14.1",
+    "npm": ">=6.4.1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/buxlabs/simpleload.git"
+    "url": "git://github.com/buxlabs/multiload.git"
   },
   "keywords": [
-    "simpleload",
+    "multiload",
     "autoload",
     "autoloader"
   ],
   "author": "Emil Ajdyna <emil@ajdyna.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/buxlabs/simpleload/issues"
+    "url": "https://github.com/buxlabs/multiload/issues"
   },
-  "homepage": "https://github.com/buxlabs/simpleload",
+  "homepage": "https://github.com/buxlabs/multiload",
   "devDependencies": {
-    "ava": "^0.25.0",
-    "eslint": "^4.11.0",
-    "nyc": "^11.3.0",
-    "rollup": "^0.61.1"
-  }
+    "ava": "^1.0.0-rc.2",
+    "nyc": "^13.1.0",
+    "pure-utilities": "^1.1.6",
+    "rollup": "^0.67.4",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "standard": "^12.0.1"
+  },
+  "standard": {
+    "ignore": [
+      "test/fixture"
+    ]
+  },
+  "dependencies": {}
 }
