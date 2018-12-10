@@ -2,3 +2,4 @@ test
 .nyc_output
 src
 config.js
+index.js
