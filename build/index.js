@@ -3,10 +3,6 @@
 var fs = require('fs');
 var path = require('path');
 
-function whitespacestrip (string) {
-  return string.replace(/\s/g, '')
-}
-
 function pad (value, pad, left = true) {
   if (!pad) { return value }
   if (Object.is(pad, Number(pad))) {
@@ -18,9 +14,67 @@ function pad (value, pad, left = true) {
   }).join('\n')
 }
 
+var pad_1 = pad;
+
 function trim (string) {
   return string.trim()
 }
+
+var trim_1 = trim;
+
+function ltrim (string, characters = ' ') {
+  let counter;
+  let character;
+
+  while (true) {
+    counter = 0;
+
+    for (let i = 0, ilen = characters.length; i < ilen; i++) {
+      character = characters[i];
+
+      if (string.startsWith(character)) {
+        counter += 1;
+        string = string.substring(1);
+      }
+    }
+
+    if (counter === 0) {
+      break
+    }
+  }
+
+  return string
+}
+
+var ltrim_1 = ltrim;
+
+function rtrim (string, characters = ' ') {
+  let counter;
+  let character;
+  let indexEnd = string.length - 1;
+
+  while (true) {
+    counter = 0;
+
+    for (let i = characters.length - 1; i >= 0; i--) {
+      character = characters[i];
+
+      if (string.endsWith(character)) {
+        counter += 1;
+        string = string.substring(0, indexEnd);
+        indexEnd -= 1;
+      }
+    }
+
+    if (counter === 0) {
+      break
+    }
+  }
+
+  return string
+}
+
+var rtrim_1 = rtrim;
 
 function strip (string, pattern) {
   if (!pattern) return string.trim()
@@ -37,9 +91,13 @@ function strip (string, pattern) {
   return string.replace(regExp, '')
 }
 
+var strip_1 = strip;
+
 function uppercase (string) {
   return string.toUpperCase()
 }
+
+var uppercase_1 = uppercase;
 
 function underscore (string) {
   string = string.trim();
@@ -62,17 +120,21 @@ function underscore (string) {
   return string.toLowerCase()
 }
 
+var underscore_1 = underscore;
+
 function capitalize (string) {
   return string.charAt(0).toUpperCase() + string.substr(1)
 }
+
+var capitalize_1 = capitalize;
 
 function unescape (string) {
   const entities = new Map([
     ['&amp;', '&'],
     ['&lt;', '<'],
     ['&gt;', '>'],
-    ['&quot;', `"`],
-    ['&39;', `'`]
+    ['&quot;', '"'],
+    ['&39;', '\'']
   ]);
 
   entities.forEach((value, key) => {
@@ -84,26 +146,38 @@ function unescape (string) {
   return string
 }
 
+var _unescape = unescape;
+
 function lowerfirst (string) {
   return string.charAt(0).toLowerCase() + string.substr(1)
 }
 
+var lowerfirst_1 = lowerfirst;
+
 function lowercase (string) {
   return string.toLowerCase()
 }
+
+var lowercase_1 = lowercase;
 
 function humanize (string, capitalize = true) {
   string = string.replace(/_/g, ' ');
   return capitalize ? string.charAt(0).toUpperCase() + string.substr(1) : string
 }
 
+var humanize_1 = humanize;
+
 function titleize (string) {
   return string.split(' ').map(word => word.substr(0, 1).toUpperCase() + word.substr(1)).join(' ')
 }
 
+var titleize_1 = titleize;
+
 function dasherize (string) {
   return string.replace(/_/g, '-')
 }
+
+var dasherize_1 = dasherize;
 
 function classify (string) {
   if (string.endsWith('s')) {
@@ -111,6 +185,8 @@ function classify (string) {
   }
   return string.charAt(0).toUpperCase() + string.substr(1)
 }
+
+var classify_1 = classify;
 
 function pluralize (string) {
   const endings = ['ch', 's', 'ss', 'sh', 'x', 'o'];
@@ -137,6 +213,8 @@ function pluralize (string) {
   return string.concat('s')
 }
 
+var pluralize_1 = pluralize;
+
 function singularize (string, appendix = '') {
   if (string.endsWith('ves')) {
     return string.substr(0, string.length - 3).concat(appendix || 'fe')
@@ -153,11 +231,15 @@ function singularize (string, appendix = '') {
   return string.substr(0, string.length - 1)
 }
 
+var singularize_1 = singularize;
+
 function swapcase (string) {
   return [...string].map(character => {
     return character.toUpperCase() === character ? character.toLowerCase() : character.toUpperCase()
   }).join('')
 }
+
+var swapcase_1 = swapcase;
 
 function camelize (string, lowercased = false) {
   const endings = /[^(a-zA-Z0-9)]|_|\s/g;
@@ -172,6 +254,8 @@ function camelize (string, lowercased = false) {
 
   return string
 }
+
+var camelize_1 = camelize;
 
 function constantize (string) {
   const specialCharacters = /[^a-zA-Z0-9]/g;
@@ -193,6 +277,8 @@ function constantize (string) {
   return string.toUpperCase()
 }
 
+var constantize_1 = constantize;
+
 function truncate (string, length = 30, ending = '...') {
   if (string.length > length) {
     return string.substr(0, length - ending.length).concat(ending)
@@ -200,28 +286,31 @@ function truncate (string, length = 30, ending = '...') {
   return string
 }
 
-function tail (string, length = 30, ending = '...') {
-  if (string.length > length) {
-    return ending + string.substr(string.length - length + ending.length)
-  }
-  return string
-}
-
-function summarize (string, length = 100) {
-  return string.length >= length ? string.concat('...') : string
-}
+var truncate_1 = truncate;
 
 function repeat (string, count) {
   return string.repeat(count)
 }
 
+var repeat_1 = repeat;
+
 function singlespace (string) {
   return string.replace(/\s\s+/g, ' ')
 }
 
+var singlespace_1 = singlespace;
+
+function whitespacestrip (string) {
+  return string.replace(/\s/g, '')
+}
+
+var whitespacestrip_1 = whitespacestrip;
+
 function quote (string, lang = 'en') {
   return lang === 'en' ? `"${string}"` : `„${string}”`
 }
+
+var quote_1 = quote;
 
 function unquote (string) {
   if (string.startsWith('"') && string.endsWith('"')) return string.substr(1, string.length - 2)
@@ -229,12 +318,14 @@ function unquote (string) {
   return string
 }
 
+var unquote_1 = unquote;
+
 function squeeze (string, pattern = 'a-zA-Z') {
   string = string.replace(/\s+/g, ' ');
   const regExp = new RegExp(`[${pattern}]`);
   for (let i = 1; i < string.length; i++) {
-    let currentCharacter = string[i];
-    let previousCharacter = string[i - 1];
+    const currentCharacter = string[i];
+    const previousCharacter = string[i - 1];
     if (regExp.test(currentCharacter) && currentCharacter === previousCharacter) {
       string = string.substr(0, i) + string.substr(i + 1);
       i--;
@@ -243,10 +334,20 @@ function squeeze (string, pattern = 'a-zA-Z') {
   return string
 }
 
+var squeeze_1 = squeeze;
+
+function summarize (string, length = 100) {
+  return string.length >= length ? string.concat('...') : string
+}
+
+var summarize_1 = summarize;
+
 function wrap (string, first, last = first) {
   if (!first) return string
   return first + string + last
 }
+
+var wrap_1 = wrap;
 
 function unwrap (string, first, last = first) {
   if (!first) return string
@@ -256,19 +357,21 @@ function unwrap (string, first, last = first) {
   return string
 }
 
+var unwrap_1 = unwrap;
+
 function replace (string, pattern, newString) {
   return string.replace(pattern, newString)
 }
 
-function index (string, pattern, start = 0) {
-  return string.indexOf(pattern, start)
-}
+var replace_1 = replace;
 
 function chop (string) {
   if (!string) return string
   const match = string.match(/(\r\n)+$/);
   return match ? string.substr(0, match.index) : string.substr(0, string.length - 1)
 }
+
+var chop_1 = chop;
 
 function chomp (string, pattern) {
   if (!string) return string
@@ -282,9 +385,13 @@ function chomp (string, pattern) {
   return match ? string.substr(0, match.index) : string
 }
 
+var chomp_1 = chomp;
+
 function dot (string) {
   return string.endsWith('.') ? string : string.concat('.')
 }
+
+var dot_1 = dot;
 
 function crop (string, length, append = '...') {
   if (string.length < length) return string
@@ -292,16 +399,7 @@ function crop (string, length, append = '...') {
   return string.substr(0, string.lastIndexOf(' ')) + append
 }
 
-function slugify (string, separator = '-') {
-  if (!string) return string
-
-  const nonWords = /[^\x20\x2D0-9A-Z\x5Fa-z\xC0-\xD6\xD8-\xF6\xF8-\xFF]/g;
-  string = string.replace(nonWords, '');
-  string = string.trim();
-  string = string.replace(/\s+/g, separator);
-
-  return string.toLowerCase()
-}
+var crop_1 = crop;
 
 function hyphenate (string) {
   if (!string) return string
@@ -324,6 +422,21 @@ function hyphenate (string) {
   return string.toLowerCase()
 }
 
+var hyphenate_1 = hyphenate;
+
+function slugify (string, separator = '-') {
+  if (!string) return string
+
+  const nonWords = /[^\x20\x2D0-9A-Z\x5Fa-z\xC0-\xD6\xD8-\xF6\xF8-\xFF]/g;
+  string = string.replace(nonWords, '');
+  string = string.trim();
+  string = string.replace(/\s+/g, separator);
+
+  return string.toLowerCase()
+}
+
+var slugify_1 = slugify;
+
 function initials (string, separator = '') {
   if (!Array.isArray(string)) {
     string = string.replace('-', ' ');
@@ -335,14 +448,29 @@ function initials (string, separator = '') {
   })
 }
 
+var initials_1 = initials;
+
 function htmlstrip (string) {
   string = string.replace(/'|:|\/|\./g, '');
   return string.replace(/(<[a-z]+((\s?)(([a-z]-?)+="(\/?[a-z]*\s?)+(|\s?)")?)+>)|<\/[a-z]*>/g, '')
 }
 
+var htmlstrip_1 = htmlstrip;
+
+function tail (string, length = 30, ending = '...') {
+  if (string.length > length) {
+    return ending + string.substr(string.length - length + ending.length)
+  }
+  return string
+}
+
+var tail_1 = tail;
+
 function split (string, separator) {
   return string.split(separator)
 }
+
+var split_1 = split;
 
 function celsius (string) {
   if (string.endsWith('K')) {
@@ -359,6 +487,8 @@ function celsius (string) {
   return string + '°C'
 }
 
+var celsius_1 = celsius;
+
 function fahrenheit (string) {
   if (string.endsWith('K')) {
     string = Number(string.substring(0, string.lastIndexOf('K')));
@@ -373,6 +503,8 @@ function fahrenheit (string) {
   }
   return string + '°F'
 }
+
+var fahrenheit_1 = fahrenheit;
 
 function kelvin (string) {
   if (string.endsWith('°F')) {
@@ -389,61 +521,154 @@ function kelvin (string) {
   return string + 'K'
 }
 
+var kelvin_1 = kelvin;
+
+function uid (length = 32) {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result
+}
+
+var uid_1 = uid;
+
+function bytes (string) {
+  const [, size, dimension] = string.match(/^(\d+)(B|KB|MB|GB|TB|PB|EB|ZB|YB)$/i) || [null, null, null];
+
+  if (!size || !dimension) {
+    return null
+  }
+
+  const dimensions = {
+    B: 2 ** 0,
+    KB: 2 ** 10,
+    MB: 2 ** 20,
+    GB: 2 ** 30,
+    TB: 2 ** 40,
+    PB: 2 ** 50,
+    EB: 2 ** 60,
+    ZB: 2 ** 70,
+    YB: 2 ** 80
+  };
+
+  return size * dimensions[dimension]
+}
+
+var bytes_1 = bytes;
+
+function index (string, pattern, start = 0) {
+  return string.indexOf(pattern, start)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var string = {
-  pad,
-  trim,
-  strip,
-  uppercase,
-  underscore,
-  capitalize,
-  unescape,
-  lowerfirst,
-  lowercase,
-  humanize,
-  titleize,
-  dasherize,
-  classify,
-  pluralize,
-  singularize,
-  swapcase,
-  camelize,
-  constantize,
-  truncate,
-  repeat,
-  singlespace,
-  whitespacestrip,
-  quote,
-  unquote,
-  squeeze,
-  summarize,
-  wrap,
-  unwrap,
-  replace,
+  pad: pad_1,
+  trim: trim_1,
+  ltrim: ltrim_1,
+  rtrim: rtrim_1,
+  strip: strip_1,
+  uppercase: uppercase_1,
+  underscore: underscore_1,
+  capitalize: capitalize_1,
+  unescape: _unescape,
+  lowerfirst: lowerfirst_1,
+  lowercase: lowercase_1,
+  humanize: humanize_1,
+  titleize: titleize_1,
+  dasherize: dasherize_1,
+  classify: classify_1,
+  pluralize: pluralize_1,
+  singularize: singularize_1,
+  swapcase: swapcase_1,
+  camelize: camelize_1,
+  constantize: constantize_1,
+  truncate: truncate_1,
+  repeat: repeat_1,
+  singlespace: singlespace_1,
+  whitespacestrip: whitespacestrip_1,
+  quote: quote_1,
+  unquote: unquote_1,
+  squeeze: squeeze_1,
+  summarize: summarize_1,
+  wrap: wrap_1,
+  unwrap: unwrap_1,
+  replace: replace_1,
   index,
-  chop,
-  chomp,
-  dot,
-  crop,
-  hyphenate,
-  slugify,
-  initials,
-  htmlstrip,
-  tail,
-  split,
-  celsius,
-  fahrenheit,
-  kelvin
+  chop: chop_1,
+  chomp: chomp_1,
+  dot: dot_1,
+  crop: crop_1,
+  hyphenate: hyphenate_1,
+  slugify: slugify_1,
+  initials: initials_1,
+  htmlstrip: htmlstrip_1,
+  tail: tail_1,
+  split: split_1,
+  celsius: celsius_1,
+  fahrenheit: fahrenheit_1,
+  kelvin: kelvin_1,
+  uid: uid_1,
+  bytes: bytes_1
 };
-var string_4 = string.uppercase;
-var string_6 = string.capitalize;
-var string_8 = string.lowercase;
-var string_16 = string.camelize;
+var string_6 = string.uppercase;
+var string_8 = string.capitalize;
+var string_10 = string.lowercase;
+var string_18 = string.camelize;
 
 var decorators = {
-  capitalize: string_6,
-  lowercase: string_8,
-  uppercase: string_4,
-  camelize: string_16,
+  capitalize: string_8,
+  lowercase: string_10,
+  uppercase: string_6,
+  camelize: string_18,
   eventize (string$$1) {
     return string$$1.replace('/', ':').replace('\\', ':').replace(/([A-Z])/g, ':$1').toLowerCase()
   },
