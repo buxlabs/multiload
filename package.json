@@ -1,6 +1,6 @@
 {
   "name": "multiload",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "description": "nodejs: simple file loader",
   "main": "index.js",
   "scripts": {
