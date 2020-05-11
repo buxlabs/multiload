@@ -1,3 +1,15 @@
+3.0.1 / 2020-05-11
+==================
+
+  * edit: .npmignore
+
+3.0.0 / 2020-05-11
+==================
+
+  * remove: rollup and plugins
+  * update: all dependencies
+  * edit: change files from import to require
+
 2.0.4 / 2018-12-10
 ==================
 
