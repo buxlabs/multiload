@@ -1,8 +1,8 @@
-import fs from 'fs'
-import decorators from './decorators'
-import files from './files'
+const fs = require('fs')
+const decorators = require('./decorators')
+const files = require('./files')
 
-export default {
+module.exports = {
   extensionLoad (path, cfg) {
     var ret = {}
     files.each(path, cfg, function (asset, name) {

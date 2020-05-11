@@ -1,8 +1,8 @@
 'use strict'
 
-import multiload from './src/index'
+const multiload = require('./src/index')
 
-export default function load (path, cfg) {
+module.exports = function load (path, cfg) {
   var modules
 
   if (typeof path !== 'string' || !path) {

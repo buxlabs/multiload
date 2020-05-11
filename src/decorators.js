@@ -1,4 +1,4 @@
-import { capitalize, lowercase, uppercase, camelize } from 'pure-utilities/string'
+const { capitalize, lowercase, uppercase, camelize } = require('pure-utilities/string')
 
 var decorators = {
   capitalize,
@@ -13,7 +13,7 @@ var decorators = {
   }
 }
 
-export default {
+module.exports = {
 
   predefined (modules, name) {
     var decorator = decorators[name]

@@ -1,6 +1,6 @@
-import test from 'ava'
-import path from 'path'
-import multiload from '../../build'
+const test = require('ava')
+const path = require('path')
+const multiload = require('../..')
 
 test('should be possible to load html files', assert => {
   var modules = multiload(path.join(__dirname, '../fixture/dir_09'), {
