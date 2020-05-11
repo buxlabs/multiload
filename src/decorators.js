@@ -7,9 +7,6 @@ var decorators = {
   camelize,
   eventize (string) {
     return string.replace('/', ':').replace('\\', ':').replace(/([A-Z])/g, ':$1').toLowerCase()
-  },
-  uppercase (string) {
-    return string.toUpperCase()
   }
 }
 
