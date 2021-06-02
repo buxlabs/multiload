@@ -1,6 +1,6 @@
 const { capitalize, lowercase, uppercase, camelize } = require('pure-utilities/string')
 
-var decorators = {
+const decorators = {
   capitalize,
   lowercase,
   uppercase,
@@ -13,7 +13,7 @@ var decorators = {
 module.exports = {
 
   predefined (modules, name) {
-    var decorator = decorators[name]
+    const decorator = decorators[name]
     if (!decorator) {
       throw new Error('Decorator: ' + name + " doesn't exist")
     }
@@ -22,7 +22,7 @@ module.exports = {
 
   decorate (modules, decorator) {
     Object.keys(modules).forEach(function (key) {
-      var result = decorator(key, modules[key])
+      const result = decorator(key, modules[key])
       modules[result] = modules[key]
       delete modules[key]
     })

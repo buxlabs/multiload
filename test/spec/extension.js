@@ -3,7 +3,7 @@ const path = require('path')
 const multiload = require('../..')
 
 test('should be possible to load html files', assert => {
-  var modules = multiload(path.join(__dirname, '../fixture/dir_09'), {
+  const modules = multiload(path.join(__dirname, '../fixture/dir_09'), {
     extension: 'html'
   })
 
@@ -15,7 +15,7 @@ test('should be possible to load html files', assert => {
 })
 
 test('should be possible to load files with extension when a folder exists', assert => {
-  var modules = multiload(path.join(__dirname, '../fixture/dir_24'), {
+  const modules = multiload(path.join(__dirname, '../fixture/dir_24'), {
     extension: 'html'
   })
 
@@ -27,7 +27,7 @@ test('should be possible to load files with extension when a folder exists', ass
 })
 
 test('should be possible to load json files', assert => {
-  var modules = multiload(path.join(__dirname, '../fixture/dir_18'), {
+  const modules = multiload(path.join(__dirname, '../fixture/dir_18'), {
     extension: 'json'
   })
 

@@ -3,7 +3,7 @@ const path = require('path')
 const multiload = require('../..')
 
 test('should be possible to load modules from different folders recursively (example 1)', assert => {
-  var modules = multiload(path.join(__dirname, '/../fixture/dir_15'), {
+  const modules = multiload(path.join(__dirname, '/../fixture/dir_15'), {
     extension: 'html',
     recursive: true
   })
@@ -13,7 +13,7 @@ test('should be possible to load modules from different folders recursively (exa
 })
 
 test('should be possible to load modules from different folders recursively (example 2)', assert => {
-  var modules = multiload(path.join(__dirname, '/../fixture/dir_16'), {
+  const modules = multiload(path.join(__dirname, '/../fixture/dir_16'), {
     extension: 'html',
     recursive: true
   })

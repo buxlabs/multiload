@@ -3,7 +3,7 @@
 const multiload = require('./src/index')
 
 module.exports = function load (path, cfg) {
-  var modules
+  let modules
 
   if (typeof path !== 'string' || !path) {
     throw new Error('multiload: path has to be defined properly')

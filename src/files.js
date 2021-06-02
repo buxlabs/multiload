@@ -4,15 +4,15 @@ const path = require('path')
 module.exports = {
 
   walk (dir, subdir) {
-    var results = []
+    let results = []
 
-    var list = fs.readdirSync(dir)
+    const list = fs.readdirSync(dir)
     list.forEach(function (asset) {
-      var route = path.join(dir, asset)
+      const route = path.join(dir, asset)
 
-      var filepath = subdir ? path.join(subdir, asset) : asset
+      const filepath = subdir ? path.join(subdir, asset) : asset
 
-      var stat = fs.statSync(route)
+      const stat = fs.statSync(route)
       if (stat.isDirectory()) {
         results = results.concat(this.walk(route, filepath))
       } else {
@@ -30,12 +30,10 @@ module.exports = {
   },
 
   each (dir, cfg, callback, context) {
-    var assets, asset, i, ilen, name
-
-    assets = this.load(dir, cfg)
-    for (i = 0, ilen = assets.length; i < ilen; i += 1) {
-      name = assets[i]
-      asset = fs.statSync(dir + '/' + name)
+    const assets = this.load(dir, cfg)
+    for (let i = 0, ilen = assets.length; i < ilen; i += 1) {
+      const name = assets[i]
+      const asset = fs.statSync(`${dir}/${name}`)
       callback(asset, name)
     }
   }
