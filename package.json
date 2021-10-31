@@ -34,9 +34,9 @@
   "devDependencies": {
     "ava": "^3.15.0",
     "nyc": "^15.1.0",
-    "standard": "^16.0.3"
+    "standard": "^16.0.4"
   },
   "dependencies": {
-    "pure-utilities": "^1.2.2"
+    "pure-utilities": "^1.2.4"
   }
 }
