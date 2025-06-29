@@ -32,11 +32,11 @@
     ]
   },
   "devDependencies": {
-    "ava": "^4.3.0",
-    "nyc": "^15.1.0",
-    "standard": "^17.0.0"
+    "ava": "^6.4.0",
+    "nyc": "^17.1.0",
+    "standard": "^17.1.2"
   },
   "dependencies": {
-    "pure-utilities": "^1.2.4"
+    "pure-utilities": "^1.4.4"
   }
 }
