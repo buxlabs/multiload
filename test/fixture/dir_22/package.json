@@ -25,11 +25,5 @@
     "url": "https://github.com/test/test/issues"
   },
   "homepage": "https://github.com/test/test",
-  "devDependencies": {
-    "chai": "*",
-    "eslint": "*",
-    "istanbul": "*",
-    "mocha": "*",
-    "coveralls": "*"
-  }
+  "devDependencies": {}
 }
