@@ -4,8 +4,8 @@
   "description": "nodejs: simple file loader",
   "main": "index.js",
   "scripts": {
-    "test": "ava test/spec/**/*.js",
-    "coverage": "nyc npm test",
+    "test": "node --test test/spec/**/*.js",
+    "coverage": "node --experimental-test-coverage --test test/spec/**/*.js",
     "lint": "standard"
   },
   "engines": {
@@ -32,8 +32,6 @@
     ]
   },
   "devDependencies": {
-    "ava": "^6.4.0",
-    "nyc": "^17.1.0",
     "standard": "^17.1.2"
   },
   "dependencies": {
