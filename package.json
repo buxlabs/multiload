@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node --test test/spec/**/*.js",
-    "coverage": "node --experimental-test-coverage --test test/spec/**/*.js",
-    "lint": "standard"
+    "coverage": "node --experimental-test-coverage --test test/spec/**/*.js"
   },
   "engines": {
     "node": ">=14.17.0"
@@ -26,14 +25,6 @@
     "url": "https://github.com/buxlabs/multiload/issues"
   },
   "homepage": "https://github.com/buxlabs/multiload",
-  "standard": {
-    "ignore": [
-      "test/fixture"
-    ]
-  },
-  "devDependencies": {
-    "standard": "^17.1.2"
-  },
   "dependencies": {
     "pure-utilities": "^1.4.4"
   }
