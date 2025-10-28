@@ -1,41 +1,39 @@
-const fs = require('fs')
-const path = require('path')
+const fs = require("fs");
+const path = require("path");
 
 module.exports = {
+  walk(dir, subdir) {
+    let results = [];
 
-  walk (dir, subdir) {
-    let results = []
-
-    const list = fs.readdirSync(dir)
+    const list = fs.readdirSync(dir);
     list.forEach(function (asset) {
-      const route = path.join(dir, asset)
+      const route = path.join(dir, asset);
 
-      const filepath = subdir ? path.join(subdir, asset) : asset
+      const filepath = subdir ? path.join(subdir, asset) : asset;
 
-      const stat = fs.statSync(route)
+      const stat = fs.statSync(route);
       if (stat.isDirectory()) {
-        results = results.concat(this.walk(route, filepath))
+        results = results.concat(this.walk(route, filepath));
       } else {
-        results.push(filepath)
+        results.push(filepath);
       }
-    }, this)
-    return results
+    }, this);
+    return results;
   },
 
-  load (dir, cfg) {
+  load(dir, cfg) {
     if (cfg.recursive) {
-      return this.walk(dir)
+      return this.walk(dir);
     }
-    return fs.readdirSync(dir)
+    return fs.readdirSync(dir);
   },
 
-  each (dir, cfg, callback, context) {
-    const assets = this.load(dir, cfg)
+  each(dir, cfg, callback, context) {
+    const assets = this.load(dir, cfg);
     for (let i = 0, ilen = assets.length; i < ilen; i += 1) {
-      const name = assets[i]
-      const asset = fs.statSync(`${dir}/${name}`)
-      callback(asset, name)
+      const name = assets[i];
+      const asset = fs.statSync(`${dir}/${name}`);
+      callback(asset, name);
     }
-  }
-
-}
+  },
+};

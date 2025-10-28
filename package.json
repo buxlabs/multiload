@@ -19,7 +19,7 @@
     "autoload",
     "autoloader"
   ],
-  "author": "Emil Ajdyna <emil@ajdyna.com>",
+  "author": "Emil Ajdyna <kontakt@buxlabs.pl>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/buxlabs/multiload/issues"
