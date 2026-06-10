@@ -4,11 +4,11 @@
   "description": "nodejs: simple file loader",
   "main": "index.js",
   "scripts": {
-    "test": "node --test test/spec/**/*.js",
+    "test": "node --test",
     "coverage": "node --experimental-test-coverage --test test/spec/**/*.js"
   },
   "engines": {
-    "node": ">=14.17.0"
+    "node": ">=24.6.0"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/buxlabs/multiload",
   "dependencies": {
-    "pure-utilities": "^1.4.4"
+    "pure-utilities": "1.4.6"
   }
 }
